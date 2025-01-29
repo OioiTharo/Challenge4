@@ -16,6 +16,7 @@
 		3B1BDA632D4AA39C002BE019 /* Challenge4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA622D4AA39C002BE019 /* Challenge4Tests.swift */; };
 		3B1BDA6D2D4AA39C002BE019 /* Challenge4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA6C2D4AA39C002BE019 /* Challenge4UITests.swift */; };
 		3B1BDA6F2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA6E2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift */; };
+		E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3B1BDA682D4AA39C002BE019 /* Challenge4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Challenge4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1BDA6C2D4AA39C002BE019 /* Challenge4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4UITests.swift; sourceTree = "<group>"; };
 		3B1BDA6E2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarCapa.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,8 @@
 		3B1BDA4A2D4AA39B002BE019 /* Challenge4 */ = {
 			isa = PBXGroup;
 			children = (
+				E3433FA12D4AA52A00FDDA13 /* View */,
+				E3433FA02D4AA50200FDDA13 /* Model */,
 				3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */,
 				3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */,
 				3B1BDA522D4AA39B002BE019 /* ContentView.swift */,
@@ -133,6 +137,37 @@
 				3B1BDA6E2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift */,
 			);
 			path = Challenge4UITests;
+			sourceTree = "<group>";
+		};
+		E3433FA02D4AA50200FDDA13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E3433FA12D4AA52A00FDDA13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E3F6C6372D4ABE0F00D03354 /* Componentes */,
+				E3F6C6362D4ABDD500D03354 /* Telas */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E3F6C6362D4ABDD500D03354 /* Telas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Telas;
+			sourceTree = "<group>";
+		};
+		E3F6C6372D4ABE0F00D03354 /* Componentes */ = {
+			isa = PBXGroup;
+			children = (
+				E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */,
+			);
+			path = Componentes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +302,7 @@
 			files = (
 				3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
+				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
 				3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */,
 			);
@@ -428,7 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -466,7 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
