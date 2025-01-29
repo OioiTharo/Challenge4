@@ -19,6 +19,7 @@
 		3B1BDA842D4ACCEB002BE019 /* Avaliacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA832D4ACCEB002BE019 /* Avaliacao.swift */; };
 		3B1BDA862D4ACD12002BE019 /* Avaliado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA852D4ACD12002BE019 /* Avaliado.swift */; };
 		3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA872D4ACD31002BE019 /* BarraProgresso.swift */; };
+		3B1BDA8A2D4ACDC2002BE019 /* LivroAmostra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA892D4ACDC2002BE019 /* LivroAmostra.swift */; };
 		E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		3B1BDA832D4ACCEB002BE019 /* Avaliacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avaliacao.swift; sourceTree = "<group>"; };
 		3B1BDA852D4ACD12002BE019 /* Avaliado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avaliado.swift; sourceTree = "<group>"; };
 		3B1BDA872D4ACD31002BE019 /* BarraProgresso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraProgresso.swift; sourceTree = "<group>"; };
+		3B1BDA892D4ACDC2002BE019 /* LivroAmostra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroAmostra.swift; sourceTree = "<group>"; };
 		E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarCapa.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 				3B1BDA832D4ACCEB002BE019 /* Avaliacao.swift */,
 				3B1BDA852D4ACD12002BE019 /* Avaliado.swift */,
 				3B1BDA872D4ACD31002BE019 /* BarraProgresso.swift */,
+				3B1BDA892D4ACDC2002BE019 /* LivroAmostra.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
+				3B1BDA8A2D4ACDC2002BE019 /* LivroAmostra.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
 				3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */,
 				3B1BDA842D4ACCEB002BE019 /* Avaliacao.swift in Sources */,
