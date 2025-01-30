@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */; };
-		3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */; };
-		3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */; };
+		3B1BDA4E2D4AA39B002BE019 /* LivroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4D2D4AA39B002BE019 /* LivroViewModel.swift */; };
+		3B1BDA512D4AA39B002BE019 /* BcChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4F2D4AA39B002BE019 /* BcChallenge.xcdatamodeld */; };
 		3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA522D4AA39B002BE019 /* ContentView.swift */; };
 		3B1BDA552D4AA39C002BE019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1BDA542D4AA39C002BE019 /* Assets.xcassets */; };
 		3B1BDA592D4AA39C002BE019 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1BDA582D4AA39C002BE019 /* Preview Assets.xcassets */; };
 		3B1BDA632D4AA39C002BE019 /* Challenge4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA622D4AA39C002BE019 /* Challenge4Tests.swift */; };
 		3B1BDA6D2D4AA39C002BE019 /* Challenge4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA6C2D4AA39C002BE019 /* Challenge4UITests.swift */; };
 		3B1BDA6F2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA6E2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift */; };
+		52647D792D4C030500970523 /* Livro+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52647D772D4C030500970523 /* Livro+CoreDataClass.swift */; };
+		52647D7A2D4C030500970523 /* Livro+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52647D782D4C030500970523 /* Livro+CoreDataProperties.swift */; };
+		52647D7C2D4C11C400970523 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52647D7B2D4C11C400970523 /* BookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 /* Begin PBXFileReference section */
 		3B1BDA482D4AA39B002BE019 /* Challenge4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4App.swift; sourceTree = "<group>"; };
-		3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		3B1BDA4D2D4AA39B002BE019 /* LivroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroViewModel.swift; sourceTree = "<group>"; };
 		3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenge4.xcdatamodel; sourceTree = "<group>"; };
 		3B1BDA522D4AA39B002BE019 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B1BDA542D4AA39C002BE019 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		3B1BDA682D4AA39C002BE019 /* Challenge4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Challenge4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1BDA6C2D4AA39C002BE019 /* Challenge4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4UITests.swift; sourceTree = "<group>"; };
 		3B1BDA6E2D4AA39C002BE019 /* Challenge4UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52647D772D4C030500970523 /* Livro+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Livro+CoreDataClass.swift"; sourceTree = "<group>"; };
+		52647D782D4C030500970523 /* Livro+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Livro+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		52647D7B2D4C11C400970523 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 		3B1BDA3F2D4AA39B002BE019 = {
 			isa = PBXGroup;
 			children = (
+				52647D772D4C030500970523 /* Livro+CoreDataClass.swift */,
+				52647D782D4C030500970523 /* Livro+CoreDataProperties.swift */,
 				3B1BDA4A2D4AA39B002BE019 /* Challenge4 */,
 				3B1BDA612D4AA39C002BE019 /* Challenge4Tests */,
 				3B1BDA6B2D4AA39C002BE019 /* Challenge4UITests */,
@@ -100,11 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */,
-				3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */,
+				3B1BDA4D2D4AA39B002BE019 /* LivroViewModel.swift */,
 				3B1BDA522D4AA39B002BE019 /* ContentView.swift */,
+				52647D7B2D4C11C400970523 /* BookView.swift */,
 				3B1BDA542D4AA39C002BE019 /* Assets.xcassets */,
 				3B1BDA562D4AA39C002BE019 /* Challenge4.entitlements */,
-				3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */,
+				3B1BDA4F2D4AA39B002BE019 /* BcChallenge.xcdatamodeld */,
 				3B1BDA572D4AA39C002BE019 /* Preview Content */,
 			);
 			path = Challenge4;
@@ -265,10 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */,
+				52647D7A2D4C030500970523 /* Livro+CoreDataProperties.swift in Sources */,
+				3B1BDA512D4AA39B002BE019 /* BcChallenge.xcdatamodeld in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
-				3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */,
+				3B1BDA4E2D4AA39B002BE019 /* LivroViewModel.swift in Sources */,
+				52647D7C2D4C11C400970523 /* BookView.swift in Sources */,
+				52647D792D4C030500970523 /* Livro+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = 8HHDC9XWBT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -438,6 +450,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -450,7 +463,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = team.Challenge4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -466,7 +480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = 8HHDC9XWBT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -476,6 +490,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -488,7 +503,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = team.Challenge4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -627,13 +643,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */ = {
+		3B1BDA4F2D4AA39B002BE019 /* BcChallenge.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */,
 			);
 			currentVersion = 3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */;
-			path = Challenge4.xcdatamodeld;
+			path = BcChallenge.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

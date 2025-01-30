@@ -3,7 +3,7 @@
 //  Challenge4
 //
 //  Created by THAIS RODRIGUES ANDRADE on 29/01/25.
-//
+//appentry
 
 import SwiftUI
 
@@ -13,8 +13,7 @@ struct Challenge4App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            BookView(context: persistenceController.container.viewContext)
         }
     }
 }
