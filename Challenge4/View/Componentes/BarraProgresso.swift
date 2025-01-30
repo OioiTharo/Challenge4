@@ -40,13 +40,19 @@ struct BarraProgresso: View {
             Circle()
                 .trim(from: 0.4, to: 0.9)
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                .opacity(0.1)
+                .fill(Color.roxoClarissimo)
                 .rotationEffect(.degrees(36))
            
             Circle()
                 .trim(from: 0.4, to: CGFloat(progressoBarra))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                .fill(Color.purple)
+                .fill(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.roxoEscuro, Color.pink]),
+                        startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                    )
+                )
                 .rotationEffect(.degrees(36))
             
             
@@ -56,5 +62,5 @@ struct BarraProgresso: View {
 }
 
 #Preview {
-    BarraProgresso(progresso: 1.2)
+    BarraProgresso(progresso: 1.5)
 }

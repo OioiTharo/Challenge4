@@ -13,8 +13,7 @@ struct Challenge4App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            BarraNavegacao()
         }
     }
 }

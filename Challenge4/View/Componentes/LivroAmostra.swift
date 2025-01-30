@@ -1,24 +1,43 @@
-//
-//  LivroAmostra.swift
-//  Challenge4
-//
-//  Created by THAIS RODRIGUES ANDRADE on 29/01/25.
-//
-
 import SwiftUI
 
 struct LivroAmostra: View {
     var body: some View {
-        VStack{
+        VStack(alignment: .leading, spacing: 0) {
             Rectangle()
-            .frame(width: 300, height: 440)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .shadow(radius: 5)
-            .foregroundColor(Color.gray)
-            Avaliado()
-                .frame(width: 300)
+                .fill(Color.gray.opacity(0.2))
+                .aspectRatio(2/3, contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            
+            HStack(alignment: .top) {
+                VStack(alignment: .leading){
+                    Text("Memórias póstumas de Braz Cubas")
+                        .font(.system(size: 14, weight: .bold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(1)
+                    
+                    Text("Autor")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.9)
+                }
+                Spacer()
+                HStack(spacing: 4) {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .font(.system(size: 10))
+                    
+                    Text(String(format: "%.1f", 2))
+                        .font(.system(size: 10, weight: .medium))
+                }
+                .padding(.vertical, 4)
+            }
+            .padding(.vertical, 8)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
+    
+    
 }
 
 #Preview {
