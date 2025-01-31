@@ -32,15 +32,15 @@ struct BarraProgresso: View {
                 Circle()
                     .trim(from: 0.4, to: 0.9)
                     .stroke(style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round, dash: [10]))
-                    .opacity(0.1)
-                    .rotationEffect(.degrees(36))
+                    .fill(.rosa)
+                    .rotationEffect(.degrees(36.5))
                     .padding(-20)
             )
             
             Circle()
                 .trim(from: 0.4, to: 0.9)
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                .fill(Color.roxoClarissimo)
+                .fill(.roxoClarissimo)
                 .rotationEffect(.degrees(36))
            
             Circle()
@@ -48,7 +48,7 @@ struct BarraProgresso: View {
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                 .fill(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.roxoEscuro, Color.pink]),
+                        gradient: Gradient(colors: [.roxoEscuro, .rosa]),
                         startPoint: .topLeading,
                                                 endPoint: .bottomTrailing
                     )

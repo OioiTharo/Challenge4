@@ -21,6 +21,9 @@
 		3B1BDA8A2D4ACDC2002BE019 /* LivroAmostra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA892D4ACDC2002BE019 /* LivroAmostra.swift */; };
 		3B34D00C2D4D3E03004B2AC8 /* BarraPesquisa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D00B2D4D3E03004B2AC8 /* BarraPesquisa.swift */; };
 		3B34D0102D4D5384004B2AC8 /* MetaSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D00F2D4D5384004B2AC8 /* MetaSheet.swift */; };
+		3B34D0122D4D64A3004B2AC8 /* Categorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D0112D4D64A3004B2AC8 /* Categorias.swift */; };
+		3B34D0142D4D6535004B2AC8 /* BotaoCategoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */; };
+		3B34D0162D4D65AB004B2AC8 /* AdicionarLivroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D0152D4D65AB004B2AC8 /* AdicionarLivroView.swift */; };
 		3B3915D72D4BEC3400A05FBB /* BarraNavegacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D62D4BEC3400A05FBB /* BarraNavegacao.swift */; };
 		3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D82D4BF00400A05FBB /* LivrosView.swift */; };
 		3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */; };
@@ -63,6 +66,9 @@
 		3B1BDA892D4ACDC2002BE019 /* LivroAmostra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroAmostra.swift; sourceTree = "<group>"; };
 		3B34D00B2D4D3E03004B2AC8 /* BarraPesquisa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraPesquisa.swift; sourceTree = "<group>"; };
 		3B34D00F2D4D5384004B2AC8 /* MetaSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaSheet.swift; sourceTree = "<group>"; };
+		3B34D0112D4D64A3004B2AC8 /* Categorias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Categorias.swift; path = Challenge4/View/Telas/Categorias.swift; sourceTree = SOURCE_ROOT; };
+		3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoCategoria.swift; sourceTree = "<group>"; };
+		3B34D0152D4D65AB004B2AC8 /* AdicionarLivroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarLivroView.swift; sourceTree = "<group>"; };
 		3B3915D62D4BEC3400A05FBB /* BarraNavegacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraNavegacao.swift; sourceTree = "<group>"; };
 		3B3915D82D4BF00400A05FBB /* LivrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LivrosView.swift; path = Challenge4/View/Componentes/LivrosView.swift; sourceTree = SOURCE_ROOT; };
 		3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoPrincipal.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 		E3433FA02D4AA50200FDDA13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B34D0112D4D64A3004B2AC8 /* Categorias.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +182,7 @@
 			children = (
 				3B3915D82D4BF00400A05FBB /* LivrosView.swift */,
 				3B1BDA522D4AA39B002BE019 /* ContentView.swift */,
+				3B34D0152D4D65AB004B2AC8 /* AdicionarLivroView.swift */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 				3B34D00B2D4D3E03004B2AC8 /* BarraPesquisa.swift */,
 				3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */,
 				3B34D00F2D4D5384004B2AC8 /* MetaSheet.swift */,
+				3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -328,14 +337,17 @@
 				3B34D00C2D4D3E03004B2AC8 /* BarraPesquisa.swift in Sources */,
 				3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */,
 				3B34D0102D4D5384004B2AC8 /* MetaSheet.swift in Sources */,
+				3B34D0162D4D65AB004B2AC8 /* AdicionarLivroView.swift in Sources */,
 				3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
 				3B1BDA8A2D4ACDC2002BE019 /* LivroAmostra.swift in Sources */,
+				3B34D0122D4D64A3004B2AC8 /* Categorias.swift in Sources */,
 				3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
 				3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */,
+				3B34D0142D4D6535004B2AC8 /* BotaoCategoria.swift in Sources */,
 				3B1BDA842D4ACCEB002BE019 /* Avaliacao.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

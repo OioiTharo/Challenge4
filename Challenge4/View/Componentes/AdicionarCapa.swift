@@ -13,19 +13,18 @@ struct AdicionarCapa: View {
                     Image(uiImage: selecionarImagem)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 300, height: 440)
+                        .frame(width: 150, height: 220)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .shadow(radius: 5)
                         
                 } else {
                     RoundedRectangle(cornerRadius: 12)
                         .fill(Color.gray.opacity(0.3))
-                        .frame(width: 300, height: 440)
+                        .frame(width: 150, height: 220)
                         .overlay(
                             VStack {
                                 Image(systemName: "photo.badge.plus")
                                 Text("Adicionar Capa")
-                                    .font(.title3)
                             }
                                 .foregroundColor(Color(red: 0.2, green: 0.19607843137254902, blue: 0.21176470588235294))
                         )

@@ -32,8 +32,13 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
-                    Button(action: { }) {
-                        BotaoPrincipal(Texto: "Adicionar Leitura", Largura: .infinity)
+                    NavigationLink(destination: AdicionarLivroView().navigationBarBackButtonHidden(true)){
+                        Text("Adicionar Leitura")
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 60)
+                            .background(.roxoEscuro)
+                            .cornerRadius(25)
+                        
                     }
                     .padding(.vertical)
                     .padding(.horizontal, 30)

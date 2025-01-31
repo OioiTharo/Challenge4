@@ -12,7 +12,7 @@ struct Avaliacao: View {
                     avaliado.toggle()
                 }){
                     Image(systemName: avaliacao>=index ? "star.fill" : "star")
-                        .foregroundColor(Color.purple)
+                        .foregroundColor(avaliacao>=index ? .amarelo : .roxoEscuro )
                 }
             }
             HStack{
