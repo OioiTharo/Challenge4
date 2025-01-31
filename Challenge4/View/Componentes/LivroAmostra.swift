@@ -17,7 +17,7 @@ struct LivroAmostra: View {
                     
                     Text("Autor")
                         .font(.system(size: 10))
-                        .foregroundColor(.gray)
+                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                         .lineLimit(1)
                         .minimumScaleFactor(0.9)
                 }

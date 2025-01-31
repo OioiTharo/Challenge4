@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct BarraProgresso: View {
-    @State var progresso: Double
+    @Binding var progresso: Double
     
     var progressoBarra: Double{
         if progresso > 1{
@@ -17,7 +17,7 @@ struct BarraProgresso: View {
         
         ZStack{
             VStack {
-                if progresso > 1{
+                if progresso >= 1{
                     Text("🥳")
                         .font(.system(size: 50))
                     Text("Meta Alcançada")
@@ -62,5 +62,5 @@ struct BarraProgresso: View {
 }
 
 #Preview {
-    BarraProgresso(progresso: 1.5)
+    BarraProgresso(progresso: .constant(1))
 }
