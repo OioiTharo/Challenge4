@@ -62,7 +62,7 @@ struct AdicionarLivroView: View {
             ZStack(alignment: .top){
                 TextEditor(text: Binding(
                     get: {
-                        livrosEntity.comentario ?? "Escrave" },
+                        livrosEntity.comentario ?? "" },
                     set: { newValue in
                             livrosEntity.comentario = newValue
                         }
