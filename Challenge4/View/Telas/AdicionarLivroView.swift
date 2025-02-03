@@ -46,14 +46,24 @@ struct AdicionarLivroView: View {
                 ))
                 .padding(.horizontal, 30)
                 .multilineTextAlignment(.center)
-                Avaliacao()
-                BotaoCategoria()
-                    .padding(.vertical)
-                ZStack(alignment: .top){
-                    TextEditor(text: Binding(
-                        get: {
-                            livrosEntity.comentario ?? "" },
-                        set: { newValue in
+            Avaliacao(avaliacao: Binding(
+                get: { Int(livrosEntity.avaliacao) },
+                set: { newValue in
+                    livrosEntity.avaliacao = Double(newValue)
+                }
+            ))
+            BotaoCategoria(categoriasSelecionadas: Binding(
+                get: { livrosEntity.arrayCategorias },
+                set: { newValue in
+                    livrosEntity.arrayCategorias = newValue
+                }
+            ))
+                .padding(.vertical)
+            ZStack(alignment: .top){
+                TextEditor(text: Binding(
+                    get: {
+                        livrosEntity.comentario ?? "Escrave" },
+                    set: { newValue in
                             livrosEntity.comentario = newValue
                         }
                     ))

@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct BotaoCategoria: View {
-    @State private var categoriasSelecionadas: [String] = []
+    @Environment(\.managedObjectContext) private var viewContext
+    @Binding var categoriasSelecionadas: [String]
     @State private var corCategoria: [String: String] = [:]
     
     var body: some View {
@@ -79,6 +80,3 @@ struct BotaoCategoria: View {
     }
 }
 
-#Preview {
-    BotaoCategoria()
-}
