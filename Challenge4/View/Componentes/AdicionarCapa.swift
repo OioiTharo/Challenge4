@@ -25,7 +25,9 @@ struct AdicionarCapa: View {
                         .overlay(
                             VStack {
                                 Image(systemName: "photo.badge.plus")
+                                    .foregroundColor(.white)
                                 Text("Adicionar Capa")
+                                    .foregroundColor(.white)
                             }
                                 .foregroundColor(Color(red: 0.2, green: 0.19607843137254902, blue: 0.21176470588235294))
                         )

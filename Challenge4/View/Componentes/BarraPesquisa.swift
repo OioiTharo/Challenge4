@@ -18,9 +18,6 @@ struct BarraPesquisa: View {
                         Text("Procure livros na sua estante")
                         
                     }
-                Spacer()
-                Image(systemName: "mic")
-                    .font(.title3)
             }
             .padding(.horizontal, 15)
         }

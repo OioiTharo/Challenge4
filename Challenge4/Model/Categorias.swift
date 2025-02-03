@@ -1,7 +1,5 @@
 import Foundation
-
-var listadeCategorias = ["❤️ Romance", "👽 Ficção", "🥲 Drama", "🏰 Fantasia", "🧗‍♂️ Ação e aventura", "🔪 Terror", "📚 Estudos", "📜 Clássicos"]
-
+import SwiftUI
 
 var CategoriasLivros: [String: String] = [
     "🏰 Fantasia": "255, 193, 69",
@@ -11,20 +9,26 @@ var CategoriasLivros: [String: String] = [
     "📚 Estudos": "65, 213, 203",
     "👽 Ficção": "36, 174, 15" ,
     "🔪 Terror": "169, 84, 75",
-    "❤️ Romance": "255, 75, 70"
+    "💛 Romance": "255, 75, 70"
 ]
 
-/*
- if let color = Color(hex: categoria.cor) { // Convertendo a cor
-                                         let corAtual = categoria.cor
-                                         let rgb = corAtual.split(separator: ",").map { Double($0.trimmingCharacters(in: .whitespaces)) ?? 0.0 }
-                                         let color = Color(red: rgb[0] / 255, green: rgb[1] / 255, blue: rgb[2] / 255)
-                                         
-                                         Circle()
-                                             .fill(color)
-                                             .frame(width: 25)
-                                     }
- */
-
-
-
+extension Color {
+    init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+        
+        var rgb: UInt64 = 0
+        let scanner = Scanner(string: hexSanitized)
+        scanner.scanLocation = 0
+        
+        if scanner.scanHexInt64(&rgb) {
+            let red = Double((rgb >> 16) & 0xFF) / 255.0
+            let green = Double((rgb >> 8) & 0xFF) / 255.0
+            let blue = Double(rgb & 0xFF) / 255.0
+            
+            self.init(red: red, green: green, blue: blue)
+        } else {
+            return nil
+        }
+    }
+}
