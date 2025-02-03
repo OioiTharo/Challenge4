@@ -6,7 +6,6 @@ struct ContentView: View {
     @FetchRequest(entity: Meta.entity(), sortDescriptors: []) var metas: FetchedResults<Meta>
 
     @State private var mostrarSheetMeta = false
-//    @State private var meta: String = "10"
     @State private var progresso: Double = 0.0
     
     var metaEntity: Meta {
@@ -41,7 +40,8 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: AdicionarLivroView().navigationBarBackButtonHidden(true)){
+                    NavigationLink(destination: AdicionarLivroView(livrosEntity: Livros(context: viewContext), context: viewContext)
+.navigationBarBackButtonHidden(true)){
                         Text("Adicionar Leitura")
                             .foregroundColor(.white)
                             .frame(width: 300, height: 60)
@@ -58,8 +58,8 @@ struct ContentView: View {
                     .padding(.leading, 20)
                 
                 LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), spacing: 5) {
-                    ForEach(0..<3) { _ in
-                        LivroAmostra()
+                    ForEach(0..<3) { livro in
+//                        LivroAmostra(livro: livro)
                     }
                 }
                 .padding(.horizontal, 20)

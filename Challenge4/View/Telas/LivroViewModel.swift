@@ -34,30 +34,47 @@ class LivroViewModel: ObservableObject {
         }
     }
     
-    func salvarLivro(){
-        let novoLivro = Livros(context: context)
-        novoLivro.idLivro = UUID()
-        novoLivro.titulo = titulo
-        novoLivro.avaliacao = avalicao
-        novoLivro.comentario = comentario
-        novoLivro.autor = autor
-        novoLivro.imagem = imagem
-        novoLivro.arrayCategorias = selecionarCategoria
-
-        do{
-            try context.save()
-            print("livro salvo")
-            print("titulo: \(titulo)")
-            print("autor: \(autor)")
-            print("comentario: \(comentario)")
-            print("categorias: \(selecionarCategoria)")
-            print("imagem: \(imagem)")
-            print("avaliacao: \(avalicao)")
-
-
-
-        }catch{
-            print("erro a salvar")
+//    func salvarLivro(livro: Livros) {
+//        let novoLivro = Livros(context: context)
+//        novoLivro.idLivro = UUID()
+//        novoLivro.titulo = titulo
+//        novoLivro.avaliacao = avalicao
+//        novoLivro.comentario = comentario
+//        novoLivro.autor = autor
+//        novoLivro.imagem = imagem
+//        novoLivro.arrayCategorias = selecionarCategoria
+//
+//        do{
+//            try context.save()
+//            print("livro salvo")
+//            print("titulo: \(titulo)")
+//            print("autor: \(autor)")
+//            print("comentario: \(comentario)")
+//            print("categorias: \(selecionarCategoria)")
+//            print("imagem: \(imagem)")
+//            print("avaliacao: \(avalicao)")
+//
+//
+//
+//        }catch{
+//            print("erro a salvar")
+//        }
+//    }
+    
+    func salvarLivro(livro: Livros) throws {
+        print("Tentando salvar livro...")
+        print("Título: \(livro.titulo ?? "Sem título")")
+        print("Autor: \(livro.autor ?? "Desconhecido")")
+        print("Imagem: \(String(describing: livro.imagem))") // Verifica se há imagem
+        print("Categorias: \(livro.arrayCategorias)")
+        
+        if context.hasChanges {
+            do {
+                try context.save()
+                print("Livro salvo com sucesso!")
+            } catch {
+                print("Erro ao salvar livro: \(error.localizedDescription)")
+            }
         }
     }
 }

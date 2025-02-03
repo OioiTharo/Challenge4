@@ -1,45 +1,32 @@
+
 import SwiftUI
 
 struct LivroAmostra: View {
+    let livro: Livros  
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Rectangle()
-                .fill(Color.gray.opacity(0.2))
-                .aspectRatio(2/3, contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            HStack(alignment: .top) {
-                VStack(alignment: .leading){
-                    Text("Memórias póstumas de Braz Cubas")
-                        .font(.system(size: 14, weight: .bold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(1)
-                    
-                    Text("Autor")
-                        .font(.system(size: 10))
-                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9)
+        Button {
+           
+        } label: {
+            VStack {
+                if let imageData = livro.imagem, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .aspectRatio(2/3, contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                Spacer()
-                HStack(spacing: 4) {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 10))
-                    
-                    Text(String(format: "%.1f", 2))
-                        .font(.system(size: 10, weight: .medium))
-                }
-                .padding(.vertical, 4)
+                
+                Text(livro.titulo ?? "Sem título")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .frame(width: 100)
+                
+                Text(livro.autor ?? "Desconhecido")
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
-            .padding(.vertical, 8)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
-    
-    
 }
 
-#Preview {
-    LivroAmostra()
-}

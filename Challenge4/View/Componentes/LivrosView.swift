@@ -1,26 +1,12 @@
 import SwiftUI
-
-struct LivrosAmostra: Identifiable {
-    let id = UUID()
-    let nome: String
-    let autor: String
-}
+import CoreData
 
 struct LivrosView: View {
-    let livros: [LivrosAmostra] = [
-        LivrosAmostra(nome: "Livro 1", autor: "Autor A"),
-        LivrosAmostra(nome: "Livro 2", autor: "Autor B"),
-        LivrosAmostra(nome: "Livro 3", autor: "Autor C"),
-        LivrosAmostra(nome: "Livro 4", autor: "Autor D"),
-        LivrosAmostra(nome: "Livro 5", autor: "Autor E"),
-        LivrosAmostra(nome: "Livro 6", autor: "Autor F"),
-        LivrosAmostra(nome: "Livro 1", autor: "Autor A"),
-        LivrosAmostra(nome: "Livro 2", autor: "Autor B"),
-        LivrosAmostra(nome: "Livro 3", autor: "Autor C"),
-        LivrosAmostra(nome: "Livro 4", autor: "Autor D"),
-        LivrosAmostra(nome: "Livro 5", autor: "Autor E"),
-        LivrosAmostra(nome: "Livro 6", autor: "Autor F")
-    ]
+    
+    @FetchRequest(
+        entity: Livros.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)]
+    ) var livros: FetchedResults<Livros>
     
     let columns = [
         GridItem(.flexible()),
@@ -37,9 +23,9 @@ struct LivrosView: View {
                 .padding(.horizontal, 20)
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 5) {
-                    ForEach(livros) { livro in
+                    ForEach(livros, id: \.self) { livro in
                         ZStack{
-                            LivroAmostra()
+                            LivroAmostra(livro: livro)
                         }
                     }
                 }

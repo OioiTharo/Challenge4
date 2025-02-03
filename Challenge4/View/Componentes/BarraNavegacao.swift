@@ -9,10 +9,12 @@ struct BarraNavegacao: View {
         TabView{
             NavigationStack{
                 ContentView()
+                    
             }
             .tabItem { Label("Início", systemImage: "house") }
             NavigationStack{
                 LivrosView()
+                    .environment(\.managedObjectContext, context)
             }
             .tabItem { Label("Leituras", systemImage: "books.vertical.fill") }
         }
