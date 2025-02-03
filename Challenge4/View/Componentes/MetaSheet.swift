@@ -3,21 +3,10 @@ import CoreData
 
 struct MetaSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
-//    @StateObject private var metaViewModel: MetaViewModel
     @ObservedObject var metaEntity: Meta
     @Binding var mostrarSheet: Bool
     var onSave: () -> Void
 
-    
-    
-
-//    init(mostrarSheet: Binding<Bool>, context: NSManagedObjectContext, onSave: @escaping () -> Void) {
-//
-//        self._mostrarSheet = mostrarSheet
-//        self.onSave = onSave
-//        _metaViewModel = StateObject(wrappedValue: MetaViewModel(context: context))
-//        _metaTemp = State(initialValue: String(metaViewModel.meta))
-//    }
     
     var body: some View {
         VStack(alignment: .leading) {
