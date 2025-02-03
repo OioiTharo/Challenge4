@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct AdicionarLivroView: View {
-    @State private var Titulo: String = "tESTE"
-    @State private var Autor: String = "tESTE"
+    @State private var Titulo: String = ""
+    @State private var Autor: String = ""
     @State private var Comentario: String = ""
     @Environment(\.presentationMode) var presentationMode
     var body: some View {

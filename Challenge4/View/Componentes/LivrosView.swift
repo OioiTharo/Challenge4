@@ -32,7 +32,9 @@ struct LivrosView: View {
         VStack(alignment: .leading){
             BarraPesquisa(textoPesquisa: "")
                 .padding(.horizontal, 25)
-                .padding(.vertical)
+                .padding(.top)
+            FiltroCategorias()
+                .padding(.horizontal, 20)
             Text("Sua estante")
                 .padding(.horizontal, 20)
             ScrollView {

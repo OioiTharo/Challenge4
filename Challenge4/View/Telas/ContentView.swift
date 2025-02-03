@@ -79,7 +79,7 @@ struct ContentView: View {
     
     private func calcularMeta() {
         if let numeroMeta = metaNumerica {
-            let qtdLivros: Int = 10
+            let qtdLivros: Int = 10 //mudar numero dps
             progresso = Double(qtdLivros) / Double(numeroMeta)
         } else {
             progresso = 0.0
