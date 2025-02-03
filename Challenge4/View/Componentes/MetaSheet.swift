@@ -1,20 +1,42 @@
 import SwiftUI
+import CoreData
 
 struct MetaSheet: View {
-    @Binding var meta: String
+    @Environment(\.managedObjectContext) private var viewContext
+//    @StateObject private var metaViewModel: MetaViewModel
+    @ObservedObject var metaEntity: Meta
     @Binding var mostrarSheet: Bool
     var onSave: () -> Void
+
+    
+    
+
+//    init(mostrarSheet: Binding<Bool>, context: NSManagedObjectContext, onSave: @escaping () -> Void) {
+//
+//        self._mostrarSheet = mostrarSheet
+//        self.onSave = onSave
+//        _metaViewModel = StateObject(wrappedValue: MetaViewModel(context: context))
+//        _metaTemp = State(initialValue: String(metaViewModel.meta))
+//    }
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("Escolha sua Meta anual de Livros: ")
-            TextField("Digite um número", text: $meta)
+            TextField("Digite um número", text: Binding(
+                get: {
+                    String(metaEntity.numeroMeta) },
+                set: {
+                    metaEntity.numeroMeta = Int16($0) ?? metaEntity.numeroMeta
+                }
+            ))
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             HStack {
                 Spacer()
                 Button(action: {
+                    try? viewContext.save()
+                    print(metaEntity)
                     onSave()
                     mostrarSheet = false
                 }) {

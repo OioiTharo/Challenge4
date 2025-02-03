@@ -1,7 +1,11 @@
 import SwiftUI
+import CoreData
 
 struct BarraNavegacao: View {
+   
+    let context: NSManagedObjectContext
     var body: some View {
+        
         TabView{
             NavigationStack{
                 ContentView()
@@ -15,6 +19,3 @@ struct BarraNavegacao: View {
     }
 }
 
-#Preview {
-    BarraNavegacao()
-}

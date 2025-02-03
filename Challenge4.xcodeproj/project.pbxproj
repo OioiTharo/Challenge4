@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */; };
-		3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */; };
 		3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */; };
 		3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA522D4AA39B002BE019 /* ContentView.swift */; };
 		3B1BDA552D4AA39C002BE019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1BDA542D4AA39C002BE019 /* Assets.xcassets */; };
@@ -25,6 +24,11 @@
 		3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D82D4BF00400A05FBB /* LivrosView.swift */; };
 		3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */; };
 		E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */; };
+		E38DE1EC2D4D62CD002741F0 /* Meta+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1E82D4D62CD002741F0 /* Meta+CoreDataClass.swift */; };
+		E38DE1EE2D4D62CD002741F0 /* Livros+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */; };
+		E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */; };
+		E38DE1F32D4D6341002741F0 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */; };
+		E38DE1F52D4D6384002741F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +51,6 @@
 /* Begin PBXFileReference section */
 		3B1BDA482D4AA39B002BE019 /* Challenge4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4App.swift; sourceTree = "<group>"; };
-		3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenge4.xcdatamodel; sourceTree = "<group>"; };
 		3B1BDA522D4AA39B002BE019 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B1BDA542D4AA39C002BE019 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +70,11 @@
 		3B3915D82D4BF00400A05FBB /* LivrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LivrosView.swift; path = Challenge4/View/Componentes/LivrosView.swift; sourceTree = SOURCE_ROOT; };
 		3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoPrincipal.swift; sourceTree = "<group>"; };
 		E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarCapa.swift; sourceTree = "<group>"; };
+		E38DE1E82D4D62CD002741F0 /* Meta+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meta+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Livros+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroViewModel.swift; sourceTree = "<group>"; };
+		E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
+		E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +128,6 @@
 				E3433FA12D4AA52A00FDDA13 /* View */,
 				E3433FA02D4AA50200FDDA13 /* Model */,
 				3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */,
-				3B1BDA4D2D4AA39B002BE019 /* Persistence.swift */,
 				3B1BDA542D4AA39C002BE019 /* Assets.xcassets */,
 				3B1BDA562D4AA39C002BE019 /* Challenge4.entitlements */,
 				3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */,
@@ -157,6 +164,9 @@
 		E3433FA02D4AA50200FDDA13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E38DE1E82D4D62CD002741F0 /* Meta+CoreDataClass.swift */,
+				E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */,
+				E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +185,8 @@
 			children = (
 				3B3915D82D4BF00400A05FBB /* LivrosView.swift */,
 				3B1BDA522D4AA39B002BE019 /* ContentView.swift */,
+				E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */,
+				E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -330,13 +342,17 @@
 				3B34D0102D4D5384004B2AC8 /* MetaSheet.swift in Sources */,
 				3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
+				E38DE1F52D4D6384002741F0 /* CoreDataManager.swift in Sources */,
+				E38DE1EC2D4D62CD002741F0 /* Meta+CoreDataClass.swift in Sources */,
+				E38DE1EE2D4D62CD002741F0 /* Livros+CoreDataClass.swift in Sources */,
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
 				3B1BDA8A2D4ACDC2002BE019 /* LivroAmostra.swift in Sources */,
+				E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */,
 				3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
-				3B1BDA4E2D4AA39B002BE019 /* Persistence.swift in Sources */,
 				3B1BDA842D4ACCEB002BE019 /* Avaliacao.swift in Sources */,
+				E38DE1F32D4D6341002741F0 /* MetaViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -534,7 +550,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -2,12 +2,19 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity: Meta.entity(), sortDescriptors: []) var metas: FetchedResults<Meta>
+
     @State private var mostrarSheetMeta = false
-    @State private var meta: String = "10"
+//    @State private var meta: String = "10"
     @State private var progresso: Double = 0.0
     
-    private var metaNumerica: Int? {
-        return Int(meta)
+    var metaEntity: Meta {
+            metas.first ?? Meta(context: viewContext)
+        }
+    
+    private var metaNumerica: Int16? {
+        return Int16(metaEntity.numeroMeta)
     }
     
     var body: some View {
@@ -15,10 +22,12 @@ struct ContentView: View {
             HStack(alignment: .top){
                 Text("Meta Anual de Leitura:")
                     .padding(.bottom, 25)
-                Text("\(meta)")
+                Text("\(metaEntity.numeroMeta)")
                     .foregroundColor(.roxoEscuro)
                 Spacer()
-                Button(action: { mostrarSheetMeta = true }) {
+                Button(action: { 
+                    mostrarSheetMeta = true
+                }) {
                     Image(systemName: "pencil")
                         .foregroundColor(.roxoEscuro)
                         .font(.title3)
@@ -54,7 +63,7 @@ struct ContentView: View {
         }
         .padding(.bottom, 50)
         .sheet(isPresented: $mostrarSheetMeta) {
-            MetaSheet(meta: $meta, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
+            MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
         }
     }
     
@@ -64,7 +73,7 @@ struct ContentView: View {
     }
     
     private func calcularMeta() {
-        if let numeroMeta = Int(meta) {
+        if let numeroMeta = metaNumerica {
             let qtdLivros: Int = 10
             progresso = Double(qtdLivros) / Double(numeroMeta)
         } else {
@@ -73,6 +82,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView(context: persistenceController.persistenteContainer.viewContext)
+//        .environment(\.managedObjectContext, persistenceController.persistenteContainer.viewContext)
+//}
