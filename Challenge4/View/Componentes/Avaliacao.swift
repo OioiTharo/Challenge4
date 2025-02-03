@@ -2,7 +2,9 @@ import SwiftUI
 
 struct Avaliacao: View {
     @State var avaliado: Bool = false
-    @State var avaliacao: Int = 0
+    @Binding var avaliacao: Int
+    
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         HStack{
@@ -25,6 +27,6 @@ struct Avaliacao: View {
     }
 }
 
-#Preview {
-    Avaliacao()
-}
+//#Preview {
+//    Avaliacao()
+//}
