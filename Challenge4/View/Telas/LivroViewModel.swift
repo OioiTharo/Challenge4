@@ -12,9 +12,7 @@ class LivroViewModel: ObservableObject {
     @Published var autor: String = ""
     @Published var imagem: Data?
     @Published var selecionarItem: PhotosPickerItem?
-    
-    let listadeCategorias = ["❤️ Romance", "👽 Ficção", "🥲 Drama", "🏰 Fantasia", "🧗‍♂️ Ação e aventura", "🔪 Terror", "📚 Estudos", "📜 Clássicos"]
-    
+        
     init(context: NSManagedObjectContext){
         self.context = context
     }

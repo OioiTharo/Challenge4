@@ -1,11 +1,3 @@
-//
-//  Meta+CoreDataClass.swift
-//  Challenge4
-//
-//  Created by STELLA CAVALCANTE ARANTES HADA on 31/01/25.
-//
-//
-
 import Foundation
 import CoreData
 

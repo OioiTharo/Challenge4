@@ -87,7 +87,7 @@ struct ContentView: View {
     }
 }
 
-//#Preview {
-//    ContentView(context: persistenceController.persistenteContainer.viewContext)
-//        .environment(\.managedObjectContext, persistenceController.persistenteContainer.viewContext)
-//}
+#Preview {
+    ContentView()
+}
+

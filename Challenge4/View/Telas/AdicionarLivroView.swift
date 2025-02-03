@@ -5,7 +5,6 @@ struct AdicionarLivroView: View {
     @State private var Autor: String = "tESTE"
     @State private var Comentario: String = ""
     @Environment(\.presentationMode) var presentationMode
-
     var body: some View {
         VStack(){
             HStack{
@@ -61,7 +60,6 @@ struct AdicionarLivroView: View {
         }
     }
 }
-
 #Preview {
     AdicionarLivroView()
 }

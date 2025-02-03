@@ -1,5 +1,5 @@
 import SwiftUI
-
+/*
 struct TesteCategoria: View {
     @State private var categoriaSelecionada: String = "Selecionar Categorias"
     var body: some View {
@@ -18,3 +18,4 @@ struct TesteCategoria: View {
 #Preview {
     TesteCategoria()
 }
+*/
