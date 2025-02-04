@@ -98,7 +98,7 @@ struct AdicionarLivroView: View {
                             .background(.roxoEscuro)
                             .cornerRadius(14)
                     }
-                    .disabled((livrosEntity.titulo?.isEmpty ?? true) || (livrosEntity.autor?.isEmpty ?? true))
+                    //.disabled((livrosEntity.titulo?.isEmpty ?? true) || (livrosEntity.autor?.isEmpty ?? true))
                     Spacer()
                     Button(action: {presentationMode.wrappedValue.dismiss()}){
                         Text("Cancelar")
