@@ -212,7 +212,6 @@
 				3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */,
 				3B34D00F2D4D5384004B2AC8 /* MetaSheet.swift */,
 				3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */,
-				3B6A37312D5137FF00FAE5B8 /* TesteCategoria.swift */,
 				E31530B12D514D3D006FD454 /* LivroAmostra.swift */,
 				3B9E64492D514599007A3437 /* FiltroCategorias.swift */,
 			);
