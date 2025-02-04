@@ -23,7 +23,7 @@ struct AdicionarLivroView: View {
                 
                 AdicionarCapa(selecionarImagem: Binding(
                     get: { livrosEntity.imagem },
-                    set: { newValue in 
+                    set: { newValue in
                         livrosEntity.imagem = newValue}
                 ))
                 
@@ -47,24 +47,24 @@ struct AdicionarLivroView: View {
                 ))
                 .padding(.horizontal, 30)
                 .multilineTextAlignment(.center)
-            Avaliacao(avaliacao: Binding(
-                get: { Int(livrosEntity.avaliacao) },
-                set: { newValue in
-                    livrosEntity.avaliacao = Double(newValue)
-                }
-            ))
-            BotaoCategoria(categoriasSelecionadas: Binding(
-                get: { livrosEntity.arrayCategorias },
-                set: { newValue in
-                    livrosEntity.arrayCategorias = newValue
-                }
-            ))
-                .padding(.vertical)
-            ZStack(alignment: .top){
-                TextEditor(text: Binding(
-                    get: {
-                        livrosEntity.comentario ?? "" },
+                Avaliacao(avaliacao: Binding(
+                    get: { Int(livrosEntity.avaliacao) },
                     set: { newValue in
+                        livrosEntity.avaliacao = Double(newValue)
+                    }
+                ))
+                BotaoCategoria(categoriasSelecionadas: Binding(
+                    get: { livrosEntity.arrayCategorias },
+                    set: { newValue in
+                        livrosEntity.arrayCategorias = newValue
+                    }
+                ))
+                .padding(.vertical)
+                ZStack(alignment: .top){
+                    TextEditor(text: Binding(
+                        get: {
+                            livrosEntity.comentario ?? "" },
+                        set: { newValue in
                             livrosEntity.comentario = newValue
                         }
                     ))
@@ -98,6 +98,7 @@ struct AdicionarLivroView: View {
                             .background(.roxoEscuro)
                             .cornerRadius(14)
                     }
+                    .disabled((livrosEntity.titulo?.isEmpty ?? true) || (livrosEntity.autor?.isEmpty ?? true))
                     Spacer()
                     Button(action: {presentationMode.wrappedValue.dismiss()}){
                         Text("Cancelar")

@@ -34,7 +34,7 @@ class LivroViewModel: ObservableObject {
         }
     }
     
-    func salvarLivro(livro: Livros) throws {
+    func salvarLivro(livro: Livros)  {
         print("Tentando salvar livro...")
         print("Título: \(livro.titulo ?? "Sem título")")
         print("Avaliaçao: \(livro.avaliacao)")

@@ -1,6 +1,7 @@
 import SwiftUI
 import PhotosUI
 import CoreData
+
 struct AdicionarCapa: View {
     @Binding var selecionarImagem: Data?
     @State private var selecionarItem: PhotosPickerItem?

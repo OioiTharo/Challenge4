@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct BarraPesquisa: View {
-    @State var textoPesquisa: String
-    
+    @Binding var textoPesquisa: String
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -37,7 +37,3 @@ extension View {
         }
 }
 
-
-#Preview {
-    BarraPesquisa(textoPesquisa: "")
-}

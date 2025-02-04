@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FiltroCategorias: View {
-    @State private var categoriaSelecionada: String? = nil
+    @Binding var categoriaSelecionada: String?
     
     var body: some View {
         HStack {
@@ -53,8 +53,4 @@ struct FiltroCategorias: View {
             }
         }
     }
-}
-
-#Preview {
-    FiltroCategorias()
 }
