@@ -51,7 +51,7 @@ struct ContentView: View {
                         .font(.title3)
                 }
             }
-            .padding(.horizontal, 20).padding(.top)
+            .padding(.horizontal, 20).padding(.top, 25)
             
             BarraProgresso(progresso: $progresso)
                 .frame(maxWidth: 500)
