@@ -23,7 +23,8 @@ struct AdicionarLivroView: View {
                 
                 AdicionarCapa(selecionarImagem: Binding(
                     get: { livrosEntity.imagem },
-                    set: { newValue in livrosEntity.imagem = newValue}
+                    set: { newValue in 
+                        livrosEntity.imagem = newValue}
                 ))
                 
                 TextField("Título", text: Binding(
