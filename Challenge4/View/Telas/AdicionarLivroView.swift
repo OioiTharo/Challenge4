@@ -150,7 +150,7 @@ struct AdicionarLivroView: View {
                 HStack{
                     Text(editando ? "Editar Livro" : "Sua Leitura")
                     Spacer()
-                }.padding(.horizontal, 20).padding(.bottom)
+                }.padding(.horizontal, 20).padding(.bottom).padding(.top)
                 
                 AdicionarCapa(selecionarImagem: $imagem).disabled(!editando && !adcLivro)
                 
