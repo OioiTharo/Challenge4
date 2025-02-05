@@ -26,7 +26,7 @@ struct MetaSheet: View {
                 Spacer()
                 Button(action: {
                     try? viewContext.save()
-                    print(metaEntity)
+                    //print(metaEntity)
                     onSave()
                     mostrarSheet = false
                 }) {

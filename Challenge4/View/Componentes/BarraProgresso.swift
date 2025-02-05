@@ -11,7 +11,7 @@ struct BarraProgresso: View {
         else{
             return 0.4 + (progresso * 0.5)
         }
-    }
+    } 
     
     var body: some View {
         

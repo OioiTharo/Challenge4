@@ -34,12 +34,12 @@ class LivroViewModel: ObservableObject {
         }
     }
     
-    func salvarLivro(livro: Livros)  {
+    func salvarLivro(livro: Livros) throws {
         print("Tentando salvar livro...")
         print("Título: \(livro.titulo ?? "Sem título")")
         print("Avaliaçao: \(livro.avaliacao)")
         print("Autor: \(livro.autor ?? "Desconhecido")")
-        print("Imagem: \(String(describing: livro.imagem))") // Verifica se há imagem
+        print("Imagem: \(String(describing: livro.imagem))") 
         print("Categorias: \(livro.arrayCategorias)")
         
         if context.hasChanges {
@@ -51,4 +51,15 @@ class LivroViewModel: ObservableObject {
             }
         }
     }
+    
+    func deletarLivro(livro: Livros) throws{
+        do {
+            context.delete(livro)
+            try context.save()
+            print("Livro deletado com sucesso!")
+        } catch {
+            print("Erro ao deletar livro: \(error.localizedDescription)")
+        }
+    }
+
 }

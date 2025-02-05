@@ -79,4 +79,3 @@ struct BotaoCategoria: View {
         )
     }
 }
-

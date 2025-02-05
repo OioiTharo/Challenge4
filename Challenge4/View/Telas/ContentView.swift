@@ -12,18 +12,18 @@ struct ContentView: View {
         metas.first ?? Meta(context: viewContext)
     }
     
-    private var metaNumerica: Int16? {
-        return Int16(metaEntity.numeroMeta)
+    private var metaNumerica: Double {
+        return Double(metaEntity.numeroMeta)
     }
     
     @FetchRequest(
         entity: Livros.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Livros.objectID, ascending: false)
+            NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)
         ],
-        animation: .default
+        predicate: NSPredicate(format: "titulo != nil && autor != nil")
     ) var ultimosLivros: FetchedResults<Livros>
-
+    
     var ultimosTresLivros: [Livros] {
         let livrosValidos = ultimosLivros.filter { livro in
             guard let titulo = livro.titulo, !titulo.isEmpty,
@@ -59,7 +59,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
-                    NavigationLink(destination: AdicionarLivroView(livrosEntity: Livros(context: viewContext), context: viewContext)
+                    NavigationLink(destination: AdicionarLivroView(livrosEntity: Livros(context: viewContext), context: viewContext, adcLivro: true)
                         .navigationBarBackButtonHidden(true)){
                             Text("Adicionar Leitura")
                                 .foregroundColor(.white)
@@ -73,17 +73,21 @@ struct ContentView: View {
                     Spacer()
                 }
                 
-                Text("Ultimas Leituras")
+                Text("Últimas Leituras")
                     .padding(.leading, 20)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(ultimosTresLivros, id: \.self) { livro in
-                            LivroAmostra(livro: livro)
+                if ultimosLivros.count > 0{
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            ForEach(ultimosTresLivros, id: \.self) { livro in
+                                LivroAmostra(livro: livro)
+                            }
                         }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 50)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 50)
+                } else{
+                    Spacer()
                 }
                 
             }
@@ -93,20 +97,24 @@ struct ContentView: View {
         .sheet(isPresented: $mostrarSheetMeta) {
             MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
         }
+        .onAppear {
+            calcularMeta()
+        }
     }
-    
     private func salvarEVoltar() {
         calcularMeta()
         mostrarSheetMeta = false
     }
-    
+
     private func calcularMeta() {
-        if let numeroMeta = metaNumerica {
-            let qtdLivros: Int = 10 //mudar numero dps
-            progresso = Double(qtdLivros) / Double(numeroMeta)
-        } else {
-            progresso = 0.0
-        }
+        print("Total de livros: \(ultimosLivros.count)")
+        
+        let qtdLivros = ultimosLivros.count
+        let numeroMeta = Int(metaEntity.numeroMeta)
+        
+        progresso = numeroMeta > 0 ? Double(qtdLivros) / Double(numeroMeta) : 0.0
+        
+        print("Livros: \(qtdLivros), Meta: \(numeroMeta), Progresso: \(progresso)")
     }
 }
 

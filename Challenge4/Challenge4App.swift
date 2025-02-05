@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct MeuApp: App {
-    let persistenceController = CoreDataManager.shered
-
+    let persistenceController = CoreDataManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            BarraNavegacao(context: persistenceController.persistenteContainer.viewContext)
-                .environment(\.managedObjectContext, persistenceController.persistenteContainer.viewContext)
+            BarraNavegacao(context: persistenceController.persistentContainer.viewContext)
+                .environment(\.managedObjectContext, persistenceController.persistentContainer.viewContext)
         }
     }
 }
