@@ -5,6 +5,18 @@ struct BotaoCategoria: View {
     @Binding var categoriasSelecionadas: [String]
     @State private var corCategoria: [String: String] = [:]
     
+    init(categoriasSelecionadas: Binding<[String]>) {
+        self._categoriasSelecionadas = categoriasSelecionadas
+        
+        var cores: [String: String] = [:]
+        for categoria in categoriasSelecionadas.wrappedValue {
+            if let cor = CategoriasLivros[categoria] {
+                cores[categoria] = cor
+            }
+        }
+        _corCategoria = State(initialValue: cores)
+    }
+    
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {

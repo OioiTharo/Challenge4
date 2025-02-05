@@ -130,6 +130,7 @@ struct AdicionarLivroView: View {
     
     @State private var titulo: String = ""
     @State private var autor: String = ""
+    @State private var comentario: String = ""
     @State private var imagem: Data? = nil
     
     init(livrosEntity: Livros, context: NSManagedObjectContext, editando: Bool = false, adcLivro: Bool = false) {
@@ -137,6 +138,7 @@ struct AdicionarLivroView: View {
         _livroViewModel = StateObject(wrappedValue: LivroViewModel(context: context))
         _titulo = State(initialValue: livrosEntity.titulo ?? "")
         _autor = State(initialValue: livrosEntity.autor ?? "")
+        _comentario = State(initialValue: livrosEntity.comentario ?? "")
         _imagem = State(initialValue: livrosEntity.imagem)
         _editando = State(initialValue: editando)
         _adcLivro = State(initialValue: adcLivro)
@@ -180,13 +182,7 @@ struct AdicionarLivroView: View {
                 .padding(.vertical)
                 
                 ZStack(alignment: .top){
-                    TextEditor(text: Binding(
-                        get: {
-                            livrosEntity.comentario ?? "" },
-                        set: { newValue in
-                            livrosEntity.comentario = newValue
-                        }
-                    ))
+                    TextEditor(text: $comentario)
                     .frame(height: 100)
                     .padding(.horizontal, 10)
                     .focused($isFocused)
@@ -198,7 +194,7 @@ struct AdicionarLivroView: View {
                     .onTapGesture {
                         isFocused = false
                     }
-                    if livrosEntity.comentario == ""{
+                    if comentario.isEmpty{
                         HStack{
                             Text("Escreva uma avaliação sobre...")
                                 .opacity(0.6)
