@@ -58,7 +58,7 @@ struct AdicionarLivroView: View {
                     set: { newValue in
                         livrosEntity.arrayCategorias = newValue
                     }
-                ))
+                ), editando: editando, adcLivro: adcLivro)
                 .disabled(!editando && !adcLivro)
                 .padding(.vertical)
                 

@@ -4,10 +4,13 @@ struct BotaoCategoria: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var categoriasSelecionadas: [String]
     @State private var corCategoria: [String: String] = [:]
-   // @Binding var editando: Bool
+    var editando: Bool
+    var adcLivro: Bool
     
-    init(categoriasSelecionadas: Binding<[String]>/*, editando: Binding<[Bool]>*/) {
+    init(categoriasSelecionadas: Binding<[String]>, editando: Bool, adcLivro: Bool) {
         self._categoriasSelecionadas = categoriasSelecionadas
+        self.editando = editando
+        self.adcLivro = adcLivro
         
         var cores: [String: String] = [:]
         for categoria in categoriasSelecionadas.wrappedValue {
@@ -17,6 +20,7 @@ struct BotaoCategoria: View {
         }
         _corCategoria = State(initialValue: cores)
     }
+
     
     var body: some View {
         VStack {
@@ -63,16 +67,20 @@ struct BotaoCategoria: View {
                     }
                 }
             } label: {
-                HStack {
-                    Text(categoriasSelecionadas.isEmpty ? "Selecionar Categorias" : "Adicionar Categorias")
-                        .foregroundColor(.white)
-                    Image(systemName: "plus")
-                        .foregroundColor(.white)
+                if !editando && !adcLivro{
+                    
+                }else{
+                    HStack {
+                        Text(categoriasSelecionadas.isEmpty ? "Selecionar Categorias" : "Adicionar Categorias")
+                            .foregroundColor(.white)
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .frame(height: 35)
+                    .background(.roxoMedio)
+                    .cornerRadius(25)
                 }
-                .padding()
-                .frame(height: 35)
-                .background(.roxoMedio)
-                .cornerRadius(25)
             }
             .padding(.horizontal)
         }
