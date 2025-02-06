@@ -7,8 +7,12 @@ struct BarraProgresso: View {
     @FetchRequest(entity: Meta.entity(), sortDescriptors: []) var metas: FetchedResults<Meta>
     
     var metaEntity: Meta {
-        metas.first ?? Meta(context: viewContext)
+        guard let meta = metas.first else {
+            return Meta(context: viewContext)
+        }
+        return meta
     }
+
     
     @FetchRequest(
         entity: Livros.entity(),
@@ -17,15 +21,15 @@ struct BarraProgresso: View {
         ],
         predicate: NSPredicate(format: "titulo != nil")
     ) var ultimosLivros: FetchedResults<Livros>
+
     
-    var progressoBarra: Double{
-        if progresso > 1{
+    var progressoBarra: Double {
+        if progresso > 1 {
             return 0.9
-        }
-        else{
+        } else {
             return 0.4 + (progresso * 0.5)
         }
-    } 
+    }
     
     var body: some View {
         ZStack{
