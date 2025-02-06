@@ -13,7 +13,6 @@ struct AdicionarLivroView: View {
     
     @State private var titulo: String = ""
     @State private var autor: String = ""
-    @State private var comentario: String = ""
     @State private var imagem: Data? = nil
     
     init(livrosEntity: Livros, context: NSManagedObjectContext, editando: Bool = false, adcLivro: Bool = false) {
@@ -21,7 +20,6 @@ struct AdicionarLivroView: View {
         _livroViewModel = StateObject(wrappedValue: LivroViewModel(context: context))
         _titulo = State(initialValue: livrosEntity.titulo ?? "")
         _autor = State(initialValue: livrosEntity.autor ?? "")
-        _comentario = State(initialValue: livrosEntity.comentario ?? "")
         _imagem = State(initialValue: livrosEntity.imagem)
         _editando = State(initialValue: editando)
         _adcLivro = State(initialValue: adcLivro)
@@ -37,7 +35,7 @@ struct AdicionarLivroView: View {
                 
                 AdicionarCapa(selecionarImagem: $imagem).disabled(!editando && !adcLivro)
                 
-                TextField("Título", text: $titulo)
+                TextField("Título*", text: $titulo)
                     .disabled(!editando && !adcLivro)
                     .font(.system(.title2, weight: .bold))
                     .padding(.horizontal, 30)
@@ -65,7 +63,12 @@ struct AdicionarLivroView: View {
                 .padding(.vertical)
                 
                 ZStack(alignment: .top){
-                    TextEditor(text: $comentario)
+                    TextEditor(text: Binding(
+                        get: { livrosEntity.comentario ?? ""},
+                        set: { newValue in
+                            livrosEntity.comentario = newValue
+                        }
+                    ))
                     .frame(height: 100)
                     .padding(.horizontal, 10)
                     .focused($isFocused)
@@ -77,7 +80,7 @@ struct AdicionarLivroView: View {
                     .onTapGesture {
                         isFocused = false
                     }
-                    if comentario.isEmpty{
+                    if livrosEntity.comentario?.isEmpty ?? true {
                         HStack{
                             Text("Escreva uma avaliação sobre...")
                                 .opacity(0.6)
@@ -87,13 +90,16 @@ struct AdicionarLivroView: View {
                 }
                 .disabled(!editando && !adcLivro)
                 
+                HStack{
+                    Text("* Obrigatório")
+                        .font(.footnote)
+                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    Spacer()
+                }.padding(.horizontal, 20)
+                
                 if adcLivro || editando {
                     HStack {
                         Button(action: {
-                            livrosEntity.titulo = titulo
-                            livrosEntity.autor = autor
-                            livrosEntity.imagem = imagem
-                            
                             if adcLivro {
                                 livrosEntity.idLivro = UUID()
                             }
@@ -112,7 +118,7 @@ struct AdicionarLivroView: View {
                                 .background(.roxoEscuro)
                                 .cornerRadius(14)
                         }
-                        .disabled(titulo.isEmpty || autor.isEmpty)
+                        .disabled(titulo.isEmpty)
                         Spacer()
                         Button(action: {
                             presentationMode.wrappedValue.dismiss()
@@ -124,7 +130,7 @@ struct AdicionarLivroView: View {
                                 .background(.rosa)
                                 .cornerRadius(14)
                         }
-                    }.padding(.horizontal, 25).padding(.vertical)
+                    }.padding(.horizontal, 25)
                     
                     
                 }else{
@@ -156,7 +162,7 @@ struct AdicionarLivroView: View {
                                 .cornerRadius(14)
                         }
                     }
-                    .padding(.horizontal, 25).padding(.vertical)
+                    .padding(.horizontal, 25)
                     
                     
                 }

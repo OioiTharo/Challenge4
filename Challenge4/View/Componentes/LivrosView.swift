@@ -13,17 +13,16 @@ struct LivrosView: View {
     
     var filteredLivros: [Livros] {
         allLivros.filter { livro in
-            guard livro.titulo != nil, !livro.titulo!.isEmpty,
-                  livro.autor != nil, !livro.autor!.isEmpty else {
+            guard livro.titulo != nil, !livro.titulo!.isEmpty else {
                 return false
             }
             
             let matchesSearch = textoPesquisa.isEmpty ||
-                (livro.titulo?.localizedCaseInsensitiveContains(textoPesquisa) ?? false) ||
-                (livro.autor?.localizedCaseInsensitiveContains(textoPesquisa) ?? false)
+            (livro.titulo?.localizedCaseInsensitiveContains(textoPesquisa) ?? false) ||
+            (livro.autor?.localizedCaseInsensitiveContains(textoPesquisa) ?? false)
             
             let matchesCategory = categoriaSelecionada == nil ||
-                (livro.categorias?.contains(categoriaSelecionada!) ?? false)
+            (livro.categorias?.contains(categoriaSelecionada!) ?? false)
             
             return matchesSearch && matchesCategory
         }
@@ -48,7 +47,20 @@ struct LivrosView: View {
                 .padding(.horizontal, 20)
             
             if filteredLivros.isEmpty {
-                Spacer()
+                HStack{
+                    Spacer()
+                    VStack{
+                        Spacer()
+                        Image("livroTriste")
+                            .resizable()
+                            .frame(width: 100, height: 122)
+                        Text("Nenhum livro encontrado")
+                            .opacity(0.6)
+                        
+                        Spacer()
+                    }
+                    Spacer()
+                }
             } else {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 5) {

@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct LivroAmostra: View {
@@ -11,9 +10,7 @@ struct LivroAmostra: View {
             AdicionarLivroView(livrosEntity: livro, context: viewContext)
         } label: {
             Group {
-                if let titulo = livro.titulo, !titulo.isEmpty,
-                   let autor = livro.autor, !autor.isEmpty,
-                   livro.avaliacao > 0 {
+                if let titulo = livro.titulo, !titulo.isEmpty{
                     VStack {
                         if let imageData = livro.imagem, let uiImage = UIImage(data: imageData) {
                             Image(uiImage: uiImage)

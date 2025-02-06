@@ -11,7 +11,7 @@ struct MetaSheet: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Escolha sua Meta anual de Livros: ")
+            Text("Digite sua Meta anual de Livros: ")
             TextField("Digite um número", text: Binding(
                 get: {
                     String(metaEntity.numeroMeta) },
@@ -26,7 +26,6 @@ struct MetaSheet: View {
                 Spacer()
                 Button(action: {
                     try? viewContext.save()
-                    //print(metaEntity)
                     onSave()
                     mostrarSheet = false
                 }) {

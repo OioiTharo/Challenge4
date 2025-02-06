@@ -3,6 +3,20 @@ import SwiftUI
 
 struct BarraProgresso: View {
     @Binding var progresso: Double
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity: Meta.entity(), sortDescriptors: []) var metas: FetchedResults<Meta>
+    
+    var metaEntity: Meta {
+        metas.first ?? Meta(context: viewContext)
+    }
+    
+    @FetchRequest(
+        entity: Livros.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)
+        ],
+        predicate: NSPredicate(format: "titulo != nil")
+    ) var ultimosLivros: FetchedResults<Livros>
     
     var progressoBarra: Double{
         if progresso > 1{
@@ -14,7 +28,6 @@ struct BarraProgresso: View {
     } 
     
     var body: some View {
-        
         ZStack{
             VStack {
                 if progresso >= 1{
@@ -24,7 +37,7 @@ struct BarraProgresso: View {
                 }else{
                     Text("\(Int((progresso*100).rounded()))%")
                         .font(.system(size: 50))
-                    Text("Alcançado")
+                    Text("Você já leu \(ultimosLivros.count) de \(metaEntity.numeroMeta) livros!")
                 }
             }
             .padding()

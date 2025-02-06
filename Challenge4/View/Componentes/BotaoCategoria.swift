@@ -4,8 +4,9 @@ struct BotaoCategoria: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var categoriasSelecionadas: [String]
     @State private var corCategoria: [String: String] = [:]
+   // @Binding var editando: Bool
     
-    init(categoriasSelecionadas: Binding<[String]>) {
+    init(categoriasSelecionadas: Binding<[String]>/*, editando: Binding<[Bool]>*/) {
         self._categoriasSelecionadas = categoriasSelecionadas
         
         var cores: [String: String] = [:]

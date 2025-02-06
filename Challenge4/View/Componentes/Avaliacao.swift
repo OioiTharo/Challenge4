@@ -3,7 +3,6 @@ import SwiftUI
 struct Avaliacao: View {
     @State var avaliado: Bool = false
     @Binding var avaliacao: Int
-    
     @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
@@ -26,7 +25,3 @@ struct Avaliacao: View {
         }
     }
 }
-
-//#Preview {
-//    Avaliacao()
-//}
