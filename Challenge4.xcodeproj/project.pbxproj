@@ -22,6 +22,8 @@
 		3B34D0142D4D6535004B2AC8 /* BotaoCategoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */; };
 		3B3915D72D4BEC3400A05FBB /* BarraNavegacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D62D4BEC3400A05FBB /* BarraNavegacao.swift */; };
 		3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D82D4BF00400A05FBB /* LivrosView.swift */; };
+		3B3D09382D5D12A90050DFA1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3D09372D5D12A90050DFA1 /* Launch Screen.storyboard */; };
+		3B3D093A2D5D1E610050DFA1 /* MetaProgressoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D09392D5D1E610050DFA1 /* MetaProgressoModel.swift */; };
 		3B6A37342D5138C000FAE5B8 /* AdicionarLivroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */; };
 		3B6A37362D51398600FAE5B8 /* Categorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A37352D51398600FAE5B8 /* Categorias.swift */; };
 		3B9E644A2D514599007A3437 /* FiltroCategorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E64492D514599007A3437 /* FiltroCategorias.swift */; };
@@ -72,6 +74,8 @@
 		3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoCategoria.swift; sourceTree = "<group>"; };
 		3B3915D62D4BEC3400A05FBB /* BarraNavegacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraNavegacao.swift; sourceTree = "<group>"; };
 		3B3915D82D4BF00400A05FBB /* LivrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LivrosView.swift; path = Challenge4/View/Componentes/LivrosView.swift; sourceTree = SOURCE_ROOT; };
+		3B3D09372D5D12A90050DFA1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		3B3D09392D5D1E610050DFA1 /* MetaProgressoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaProgressoModel.swift; sourceTree = "<group>"; };
 		3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarLivroView.swift; sourceTree = "<group>"; };
 		3B6A37352D51398600FAE5B8 /* Categorias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorias.swift; sourceTree = "<group>"; };
 		3B9E64492D514599007A3437 /* FiltroCategorias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltroCategorias.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */,
 				E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */,
 				3B6A37352D51398600FAE5B8 /* Categorias.swift */,
+				3B3D09392D5D1E610050DFA1 /* MetaProgressoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */,
 				E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */,
 				3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */,
+				3B3D09372D5D12A90050DFA1 /* Launch Screen.storyboard */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3D09382D5D12A90050DFA1 /* Launch Screen.storyboard in Resources */,
 				3B1BDA592D4AA39C002BE019 /* Preview Assets.xcassets in Resources */,
 				3B1BDA552D4AA39C002BE019 /* Assets.xcassets in Resources */,
 			);
@@ -355,6 +362,7 @@
 				3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */,
 				3B34D0102D4D5384004B2AC8 /* MetaSheet.swift in Sources */,
 				3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */,
+				3B3D093A2D5D1E610050DFA1 /* MetaProgressoModel.swift in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
 				E38DE1F52D4D6384002741F0 /* CoreDataManager.swift in Sources */,
 				E38DE1EC2D4D62CD002741F0 /* Meta+CoreDataClass.swift in Sources */,

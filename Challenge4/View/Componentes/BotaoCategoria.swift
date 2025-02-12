@@ -35,9 +35,11 @@ struct BotaoCategoria: View {
                                 categoriasSelecionadas.removeAll { $0 == categoria }
                                 corCategoria.removeValue(forKey: categoria)
                             }) {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, 4)
+                                if editando || adcLivro{
+                                    Image(systemName: "xmark")
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 4)
+                                }
                             }
                         }
                         .padding(.horizontal)
@@ -67,9 +69,7 @@ struct BotaoCategoria: View {
                     }
                 }
             } label: {
-                if !editando && !adcLivro{
-                    
-                }else{
+                if editando || adcLivro{
                     HStack {
                         Text(categoriasSelecionadas.isEmpty ? "Selecionar Categorias" : "Adicionar Categorias")
                             .foregroundColor(.white)

@@ -6,7 +6,7 @@ struct LivroAmostra: View {
     
     var body: some View {
         
-        NavigationLink {
+       NavigationLink {
             AdicionarLivroView(livrosEntity: livro, context: viewContext)
         } label: {
             Group {

@@ -14,6 +14,8 @@ struct AdicionarLivroView: View {
     @State private var titulo: String = ""
     @State private var autor: String = ""
     @State private var imagem: Data? = nil
+    @State private var mostrarAlerta = false
+    @State private var mostrarAlerta2 = false
     
     init(livrosEntity: Livros, context: NSManagedObjectContext, editando: Bool = false, adcLivro: Bool = false) {
         self.livrosEntity = livrosEntity
@@ -87,6 +89,13 @@ struct AdicionarLivroView: View {
                             Spacer()
                         }.padding(.horizontal, 35).padding(.top, 8)
                     }
+                    if !editando && !adcLivro{
+                        HStack{
+                            Text("Sua avaliação:")
+                                .opacity(0.6)
+                            Spacer()
+                        }.padding(.horizontal, 25).padding(.top, -25)
+                    }
                 }
                 .disabled(!editando && !adcLivro)
                 if(editando || adcLivro){
@@ -98,18 +107,10 @@ struct AdicionarLivroView: View {
                     }.padding(.horizontal, 20)
                 }
                 
-                if adcLivro || editando {
-                    HStack {
-                        Button(action: { // botao adcionar ou salvar alteracoes
-                            livrosEntity.titulo = titulo
-                            livrosEntity.autor = autor
-                            livrosEntity.imagem = imagem
-                            print(titulo)
-                            
-                            if adcLivro {
-                                livrosEntity.idLivro = UUID()
-                            }
-                            
+                if adcLivro{
+                    HStack{
+                        Button(action: {
+                            livrosEntity.idLivro = UUID()
                             do {
                                 try livroViewModel.salvarLivro(livro: livrosEntity)
                                 presentationMode.wrappedValue.dismiss()
@@ -118,8 +119,8 @@ struct AdicionarLivroView: View {
                             } catch {
                                 print("Erro ao salvar: \(error)")
                             }
-                        }) {
-                            Text(editando ? "Salvar alterações" : "Adicionar")
+                        }){
+                            Text("Adicionar")
                                 .foregroundColor(.white)
                                 .frame(width: 155, height: 40)
                                 .background(.roxoEscuro)
@@ -138,41 +139,146 @@ struct AdicionarLivroView: View {
                                 .cornerRadius(14)
                         }
                     }.padding(.horizontal, 25).padding(.vertical)
-                    
-                    
-                }else{
-                    HStack{
-                        
-                        Button(action: {
-                            editando = true
-                        }){
-                            Text("Editar")
-                                .foregroundColor(.white)
-                                .frame(width: 155, height: 40)
-                                .background(.roxoEscuro)
-                                .cornerRadius(14)
-                        }
-                        
-                        Spacer()
-                        Button(action: {
-                            do {
-                                try livroViewModel.deletarLivro(livro: livrosEntity)
-                                presentationMode.wrappedValue.dismiss()
-                            } catch {
-                                print("Erro ao deletar: \(error)")
-                            }
-                        }) {
-                            Text("Deletar")
-                                .foregroundColor(.white)
-                                .frame(width: 155, height: 40)
-                                .background(.rosa)
-                                .cornerRadius(14)
-                        }
-                    }
-                    .padding(.horizontal, 25).padding(.vertical)
-                    
-                    
                 }
+                /*if adcLivro || editando {
+                 HStack {
+                 Button(action: {
+                 if adcLivro {
+                 livrosEntity.idLivro = UUID()
+                 }
+                 
+                 do {
+                 try livroViewModel.salvarLivro(livro: livrosEntity)
+                 presentationMode.wrappedValue.dismiss()
+                 onChange?()
+                 editando = false
+                 } catch {
+                 print("Erro ao salvar: \(error)")
+                 }
+                 }) {
+                 if editando == true{
+                 Text("Salvar alterações" )
+                 .foregroundColor(.white)
+                 .padding(10)
+                 .frame(maxWidth: .infinity)
+                 .background(.roxoEscuro)
+                 .cornerRadius(14)
+                 .padding(.horizontal, 10)
+                 .alert(isPresented: $mostrarAlerta) {
+                 Alert(
+                 title: Text("Cuidado!"),
+                 message: Text("Tem certeza que deseja alterar essa leitura? 🤔"),
+                 primaryButton: .destructive(Text("Alterar")) {
+                 do {
+                 try livroViewModel.deletarLivro(livro: livrosEntity)
+                 presentationMode.wrappedValue.dismiss()
+                 } catch {
+                 print("Erro ao deletar: \(error)")
+                 }
+                 },
+                 secondaryButton: .cancel()
+                 )
+                 }
+                 } else{
+                 Text("Adicionar")
+                 .foregroundColor(.white)
+                 .frame(width: 155, height: 40)
+                 .background(.roxoEscuro)
+                 .cornerRadius(14)
+                 }
+                 }
+                 .disabled(titulo.isEmpty || autor.isEmpty)
+                 
+                 Spacer()
+                 if adcLivro == true{
+                 Button(action: {
+                 presentationMode.wrappedValue.dismiss()
+                 editando = false
+                 }){
+                 Text("Cancelar")
+                 .foregroundColor(.white)
+                 .frame(width: 155, height: 40)
+                 .background(.rosa)
+                 .cornerRadius(14)
+                 }
+                 }
+                 }.padding(.horizontal, 25).padding(.vertical)
+                 
+                 
+                 }*/else{
+                     if editando{
+                         Button(action: {
+                             mostrarAlerta2 = true
+                         }) {
+                             Text("Salvar alterações" )
+                                 .foregroundColor(.white)
+                                 .padding(10)
+                                 .frame(maxWidth: .infinity)
+                                 .background(.roxoEscuro)
+                                 .cornerRadius(14)
+                                 .padding(.horizontal, 20)
+                         }.disabled(titulo.isEmpty || autor.isEmpty)
+                             .alert(isPresented: $mostrarAlerta2) {
+                                 Alert(
+                                    title: Text("Atençao!"),
+                                    message: Text("As informações anteriores serão alteradas!"),
+                                    primaryButton: .default(Text("Alterar")) {
+                                        do {
+                                            try livroViewModel.salvarLivro(livro: livrosEntity)
+                                            presentationMode.wrappedValue.dismiss()
+                                            onChange?()
+                                            editando = false
+                                        } catch {
+                                            print("Erro ao salvar: \(error)")
+                                        }
+                                    },
+                                    secondaryButton: .destructive(Text("Cancelar"))
+                                 )
+                             }
+                     }
+                     else{
+                         HStack{
+                             
+                             Button(action: {
+                                 editando = true
+                             }){
+                                 Text("Editar")
+                                     .foregroundColor(.white)
+                                     .frame(width: 155, height: 40)
+                                     .background(.roxoEscuro)
+                                     .cornerRadius(14)
+                             }
+                             
+                             Spacer()
+                             Button(action: {
+                                 mostrarAlerta = true
+                             }) {
+                                 Text("Deletar")
+                                     .foregroundColor(.white)
+                                     .frame(width: 155, height: 40)
+                                     .background(.rosa)
+                                     .cornerRadius(14)
+                             }
+                             .alert(isPresented: $mostrarAlerta) {
+                                 Alert(
+                                    title: Text("Cuidado!"),
+                                    message: Text("Tem certeza de que deseja excluir esta leitura? Esta ação não pode ser desfeita. 🤔"),
+                                    primaryButton: .destructive(Text("Deletar")) {
+                                        do {
+                                            try livroViewModel.deletarLivro(livro: livrosEntity)
+                                            presentationMode.wrappedValue.dismiss()
+                                        } catch {
+                                            print("Erro ao deletar: \(error)")
+                                        }
+                                    },
+                                    secondaryButton: .cancel()
+                                 )
+                             }
+                         }
+                         .padding(.horizontal, 25).padding(.vertical)
+                     }
+                     
+                 }
             }
             .onAppear() {
                 onChange?()

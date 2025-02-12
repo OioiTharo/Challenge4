@@ -3,18 +3,23 @@ import CoreData
 
 struct BarraNavegacao: View {
     let context: NSManagedObjectContext
+    
     var body: some View {
-        
-        TabView{
-            NavigationStack{
-                ContentView()
+        TabView {
+            NavigationStack {
+                ContentView(viewContext: context)
             }
-            .tabItem { Label("Início", systemImage: "house") }
-            NavigationStack{
+            .tabItem {
+                Label("Início", systemImage: "house")
+            }
+            
+            NavigationStack {
                 LivrosView()
-                    .environment(\.managedObjectContext, context)
             }
-            .tabItem { Label("Leituras", systemImage: "books.vertical.fill") }
+            .tabItem {
+                Label("Leituras", systemImage: "books.vertical.fill")
+            }
         }
+        .environment(\.managedObjectContext, context)
     }
 }
