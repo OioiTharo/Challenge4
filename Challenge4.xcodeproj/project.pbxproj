@@ -27,6 +27,7 @@
 		3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */; };
 		E31530B22D514D3D006FD454 /* LivroAmostra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31530B12D514D3D006FD454 /* LivroAmostra.swift */; };
 		E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */; };
+		E346DCAD2D5D1E4E00F73BFF /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */; };
 		E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */; };
 		E38DE1F32D4D6341002741F0 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoPrincipal.swift; sourceTree = "<group>"; };
 		E31530B12D514D3D006FD454 /* LivroAmostra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroAmostra.swift; sourceTree = "<group>"; };
 		E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarCapa.swift; sourceTree = "<group>"; };
+		E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroViewModel.swift; sourceTree = "<group>"; };
 		E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +165,7 @@
 		E3433FA02D4AA50200FDDA13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */,
 				3B6A37352D51398600FAE5B8 /* Categorias.swift */,
 			);
 			path = Model;
@@ -343,6 +346,7 @@
 				3B34D0102D4D5384004B2AC8 /* MetaSheet.swift in Sources */,
 				3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
+				E346DCAD2D5D1E4E00F73BFF /* SwiftData.swift in Sources */,
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
 				E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */,
@@ -513,7 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -535,7 +539,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = team.Challenge4;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.booki.academy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,7 +562,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -580,7 +584,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = team.Challenge4;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.booki.academy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
