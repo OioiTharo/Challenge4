@@ -1,23 +1,21 @@
 import SwiftUI
-import CoreData
+import SwiftData
 
 class MetaViewModel: ObservableObject {
-    private var context: NSManagedObjectContext
+    private var viewContext: ModelContext
     
     @Published var meta: Int16 = 0
     
     
-    init(context: NSManagedObjectContext) {
-        self.context = context
+    init(viewContext: ModelContext) {
+        self.viewContext = viewContext
        
     }
     
     func salvarMeta(){
-        let novaMeta = Meta(context: context)
-        novaMeta.numeroMeta = meta
         
         do{
-            try context.save()
+            try viewContext.save()
             print("Meta salava de : \(meta)")
            
         }catch{

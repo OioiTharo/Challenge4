@@ -1,15 +1,23 @@
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct LivrosView: View {
     @State private var textoPesquisa = ""
     @State private var categoriaSelecionada: String? = nil
     
-    @FetchRequest(
-        entity: Livros.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)],
-        predicate: NSPredicate(value: true)
-    ) var allLivros: FetchedResults<Livros>
+    @Query(
+        filter: #Predicate<Livros> {
+            livro in
+            livro.titulo != nil
+        },
+        sort: \Livros.titulo,
+        order: .reverse
+    ) private var allLivros: [Livros]
+//    @FetchRequest(
+//        entity: Livros.entity(),
+//        sortDescriptors: [NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)],
+//        predicate: NSPredicate(value: true)
+//    ) var allLivros: FetchedResults<Livros>
     
     var filteredLivros: [Livros] {
         allLivros.filter { livro in

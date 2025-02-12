@@ -1,26 +1,27 @@
-
+import SwiftData
 import SwiftUI
 
 struct BarraProgresso: View {
     @Binding var progresso: Double
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Meta.entity(), sortDescriptors: []) var metas: FetchedResults<Meta>
+//    @Environment(\.modelContext) private var viewContext
+    @Query private var metas: [Metas]
     
-    var metaEntity: Meta {
+    var metaEntity: Metas {
         guard let meta = metas.first else {
-            return Meta(context: viewContext)
+            return Metas(numeroMeta: 0)
         }
         return meta
     }
 
     
-    @FetchRequest(
-        entity: Livros.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)
-        ],
-        predicate: NSPredicate(format: "titulo != nil")
-    ) var ultimosLivros: FetchedResults<Livros>
+    @Query(
+        filter: #Predicate<Livros> {
+            livro in
+            livro.titulo != nil
+        },
+        sort: \Livros.titulo,
+        order: .reverse
+    ) private var ultimosLivros: [Livros]
 
     
     var progressoBarra: Double {

@@ -1,16 +1,16 @@
 import SwiftUI
 import PhotosUI
-import CoreData
+import SwiftData
 
 class LivroViewModel: ObservableObject {
-    private var context: NSManagedObjectContext
-
+    @Environment(\.modelContext) private var viewContext
+//    @Query private var livro: [Livros]
     @Published var selecionarItem: PhotosPickerItem?
         
-    init(context: NSManagedObjectContext){
-        self.context = context
-    }
-        
+//    init(context: NSManagedObjectContext){
+//        self.context = context
+//    }
+//        
     func salvarLivro(livro: Livros) throws {
         print("Tentando salvar livro...")
         print("Título: \(livro.titulo ?? "Sem título")")
@@ -20,9 +20,9 @@ class LivroViewModel: ObservableObject {
         print("Imagem: \(String(describing: livro.imagem))")
         print("Categorias: \(livro.arrayCategorias)")
         
-        if context.hasChanges {
+        if viewContext.hasChanges {
             do {
-                try context.save()
+                try viewContext.save()
                 print("Livro salvo com sucesso!")
             } catch {
                 print("Erro ao salvar livro: \(error.localizedDescription)")
@@ -31,13 +31,12 @@ class LivroViewModel: ObservableObject {
     }
     
     func deletarLivro(livro: Livros) throws{
-        do {
-            context.delete(livro)
-            try context.save()
-            print("Livro deletado com sucesso!")
-        } catch {
-            print("Erro ao deletar livro: \(error.localizedDescription)")
-        }
-    }
-
+          do {
+              viewContext.delete(livro)
+              try viewContext.save()
+              print("Livro deletado com sucesso!")
+          } catch {
+              print("Erro ao deletar livro: \(error.localizedDescription)")
+          }
+      }
 }

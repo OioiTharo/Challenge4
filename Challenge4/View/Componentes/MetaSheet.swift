@@ -1,10 +1,10 @@
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct MetaSheet: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var viewContext
 
-    @ObservedObject var metaEntity: Meta
+    @Bindable var metaEntity: Metas
     @Binding var mostrarSheet: Bool
     var onSave: () -> Void
 

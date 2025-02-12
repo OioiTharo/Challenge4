@@ -1,13 +1,21 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct MeuApp: App {
-    let persistenceController = CoreDataManager.shared
+   
+    let container: ModelContainer
     
+        init() {
+            do {
+                container = try ModelContainer(for: Livros.self, Metas.self)
+            } catch {
+                fatalError("Failed to initialize ModelContainer")
+            }
+        }
     var body: some Scene {
         WindowGroup {
-            BarraNavegacao(context: persistenceController.persistentContainer.viewContext)
-                .environment(\.managedObjectContext, persistenceController.persistentContainer.viewContext)
+            BarraNavegacao()
         }
     }
 }

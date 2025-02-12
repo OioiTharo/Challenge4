@@ -1,38 +1,34 @@
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Meta.entity(), sortDescriptors: []) var metas: FetchedResults<Meta>
+//    @Environment(\.modelContext) private var viewContext
+    @Query private var livro: [Livros]
     
     @State private var mostrarSheetMeta = false
-    @State private var progresso: Double = 0.0
+    @State private var progresso: Double = 0
     
-    var metaEntity: Meta {
-        metas.first ?? Meta(context: viewContext)
+    @Query private var metas: [Metas]
+    
+    var metaEntity: Metas {
+        metas.first ?? Metas(numeroMeta: 0)
     }
     
     private var metaNumerica: Double {
         return Double(metaEntity.numeroMeta)
     }
     
-    @FetchRequest(
-        entity: Livros.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)
-        ],
-        predicate: NSPredicate(format: "titulo != nil")
-    ) var ultimosLivros: FetchedResults<Livros>
-    
+    @Query(
+        filter: #Predicate<Livros> {
+            livro in
+            livro.titulo != nil
+        },
+        sort: \Livros.titulo,
+        order: .reverse
+    ) private var ultimosLivros: [Livros]
+
     var ultimosTresLivros: [Livros] {
-        let livrosValidos = ultimosLivros.filter { livro in
-            guard let titulo = livro.titulo, !titulo.isEmpty,
-                  let autor = livro.autor, !autor.isEmpty else {
-                return false
-            }
-            return true
-        }
-        return Array(livrosValidos.prefix(3))
+        Array(ultimosLivros.prefix(3))
     }
     
     var body: some View {
@@ -61,7 +57,7 @@ struct ContentView: View {
            
             HStack{
                 Spacer()
-                NavigationLink(destination: AdicionarLivroView(livrosEntity: Livros(context: viewContext), context: viewContext, adcLivro: true)
+                NavigationLink(destination: AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
                     .navigationBarBackButtonHidden(true)){
                         Text("Adicionar Leitura")
                             .foregroundColor(.white)
@@ -94,7 +90,6 @@ struct ContentView: View {
             MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
         }
         .onAppear {
-            viewContext.refreshAllObjects()
             calcularMeta()
         }
         
@@ -110,12 +105,12 @@ struct ContentView: View {
         let qtdLivros = ultimosLivros.count
         let numeroMeta = Int(metaEntity.numeroMeta)
         
-        progresso = numeroMeta > 0 ? Double(qtdLivros) / Double(numeroMeta) : 0.0
+        progresso = numeroMeta > 0 ? Double(qtdLivros) / Double(numeroMeta) : 0
         
         print("Livros: \(qtdLivros), Meta: \(numeroMeta), Progresso: \(progresso)")
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView(livro: livro)
+//}

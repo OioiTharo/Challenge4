@@ -1,11 +1,12 @@
 import SwiftUI
 import PhotosUI
-import CoreData
+import SwiftData
 
 struct AdicionarCapa: View {
     @Binding var selecionarImagem: Data?
     @State private var selecionarItem: PhotosPickerItem?
-    @Environment(\.managedObjectContext) private var viewContext
+//    @Environment(\.modelContext) private var viewContext
+    
     
     var body: some View {
         

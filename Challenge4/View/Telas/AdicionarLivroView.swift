@@ -1,10 +1,10 @@
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct AdicionarLivroView: View {
-    @ObservedObject var livrosEntity: Livros
-    @Environment(\.presentationMode) var presentationMode
-    @Environment(\.managedObjectContext) private var viewContext
+    @Bindable var livro: Livros
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) private var viewContext
     @StateObject private var livroViewModel: LivroViewModel
     @FocusState private var isFocused: Bool
     var onChange:(() -> Void)?
@@ -15,12 +15,12 @@ struct AdicionarLivroView: View {
     @State private var autor: String = ""
     @State private var imagem: Data? = nil
     
-    init(livrosEntity: Livros, context: NSManagedObjectContext, editando: Bool = false, adcLivro: Bool = false) {
-        self.livrosEntity = livrosEntity
-        _livroViewModel = StateObject(wrappedValue: LivroViewModel(context: context))
-        _titulo = State(initialValue: livrosEntity.titulo ?? "")
-        _autor = State(initialValue: livrosEntity.autor ?? "")
-        _imagem = State(initialValue: livrosEntity.imagem)
+    init(livro: Livros, editando: Bool = false, adcLivro: Bool = false) {
+        self.livro = livro
+        _livroViewModel = StateObject(wrappedValue: LivroViewModel())
+        _titulo = State(initialValue: livro.titulo ?? "")
+        _autor = State(initialValue: livro.autor ?? "")
+        _imagem = State(initialValue: livro.imagem)
         _editando = State(initialValue: editando)
         _adcLivro = State(initialValue: adcLivro)
     }
@@ -47,16 +47,16 @@ struct AdicionarLivroView: View {
                     .multilineTextAlignment(.center)
                 
                 Avaliacao(avaliacao: Binding(
-                    get: { Int(livrosEntity.avaliacao) },
+                    get: { Int(livro.avaliacao ?? 0) },
                     set: { newValue in
-                        livrosEntity.avaliacao = Double(newValue)
+                        livro.avaliacao = Double(newValue)
                     }
                 )).disabled(!editando && !adcLivro)
                 
                 BotaoCategoria(categoriasSelecionadas: Binding(
-                    get: { livrosEntity.arrayCategorias },
+                    get: { livro.arrayCategorias },
                     set: { newValue in
-                        livrosEntity.arrayCategorias = newValue
+                        livro.arrayCategorias = newValue
                     }
                 ), editando: editando, adcLivro: adcLivro)
                 .disabled(!editando && !adcLivro)
@@ -64,9 +64,9 @@ struct AdicionarLivroView: View {
                 
                 ZStack(alignment: .top){
                     TextEditor(text: Binding(
-                        get: { livrosEntity.comentario ?? ""},
+                        get: { livro.comentario ?? ""},
                         set: { newValue in
-                            livrosEntity.comentario = newValue
+                            livro.comentario = newValue
                         }
                     ))
                     .frame(height: 100)
@@ -80,7 +80,7 @@ struct AdicionarLivroView: View {
                     .onTapGesture {
                         isFocused = false
                     }
-                    if livrosEntity.comentario?.isEmpty ?? true {
+                    if livro.comentario?.isEmpty ?? true {
                         HStack{
                             Text("Escreva uma avaliação sobre...")
                                 .opacity(0.6)
@@ -101,18 +101,18 @@ struct AdicionarLivroView: View {
                 if adcLivro || editando {
                     HStack {
                         Button(action: { // botao adcionar ou salvar alteracoes
-                            livrosEntity.titulo = titulo
-                            livrosEntity.autor = autor
-                            livrosEntity.imagem = imagem
+                            livro.titulo = titulo
+                            livro.autor = autor
+                            livro.imagem = imagem
                             print(titulo)
                             
                             if adcLivro {
-                                livrosEntity.idLivro = UUID()
+                                livro.idLivro = UUID()
                             }
                             
                             do {
-                                try livroViewModel.salvarLivro(livro: livrosEntity)
-                                presentationMode.wrappedValue.dismiss()
+                                try? livroViewModel.salvarLivro(livro: livro)
+                                dismiss()
                                 onChange?()
                                 editando = false
                             } catch {
@@ -128,7 +128,7 @@ struct AdicionarLivroView: View {
                         .disabled(titulo.isEmpty || autor.isEmpty)
                         Spacer()
                         Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                            dismiss()
                             editando = false
                         }){
                             Text("Cancelar")
@@ -155,9 +155,10 @@ struct AdicionarLivroView: View {
                         
                         Spacer()
                         Button(action: {
+                            viewContext.delete(livro)
                             do {
-                                try livroViewModel.deletarLivro(livro: livrosEntity)
-                                presentationMode.wrappedValue.dismiss()
+                                try? viewContext.save()
+                                dismiss()
                             } catch {
                                 print("Erro ao deletar: \(error)")
                             }

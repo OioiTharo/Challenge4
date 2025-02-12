@@ -1,8 +1,7 @@
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct BarraNavegacao: View {
-    let context: NSManagedObjectContext
     var body: some View {
         
         TabView{
@@ -12,7 +11,6 @@ struct BarraNavegacao: View {
             .tabItem { Label("Início", systemImage: "house") }
             NavigationStack{
                 LivrosView()
-                    .environment(\.managedObjectContext, context)
             }
             .tabItem { Label("Leituras", systemImage: "books.vertical.fill") }
         }

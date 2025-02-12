@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BotaoCategoria: View {
-    @Environment(\.managedObjectContext) private var viewContext
+  
     @Binding var categoriasSelecionadas: [String]
     @State private var corCategoria: [String: String] = [:]
     var editando: Bool
@@ -88,7 +88,7 @@ struct BotaoCategoria: View {
     
     func parseColor(from colorString: String) -> Color {
         let rgb = colorString.split(separator: ",").map {
-            Double($0.trimmingCharacters(in: .whitespaces)) ?? 0.0
+            Double($0.trimmingCharacters(in: .whitespaces)) ?? 0
         }
         
         guard rgb.count == 3 else { return Color.blue }

@@ -1,8 +1,9 @@
 import SwiftData
 import SwiftUI
 
-@Model class ModelLivros{
-    var titulo: String
+@Model class Livros{
+    @Attribute(.unique) var idLivro: UUID
+    var titulo: String?
     var autor: String?
     var categorias: String?
     var comentario: String?
@@ -10,6 +11,7 @@ import SwiftUI
     var avaliacao: Double?
     
     init(titulo: String, autor: String? = nil, categorias: String? = nil, comentario: String? = nil, imagem: Data? = nil, avaliacao: Double? = nil) {
+        self.idLivro = UUID()
         self.titulo = titulo
         self.autor = autor
         self.categorias = categorias
@@ -29,10 +31,10 @@ import SwiftUI
     
 }
 
-@Model class ModelMetas{
-    var numeroMeta: Int16?
+@Model class Metas{
+    var numeroMeta: Int16
     
-    init(numeroMeta: Int16? = nil) {
+    init(numeroMeta: Int16) {
         self.numeroMeta = numeroMeta
     }
 }
