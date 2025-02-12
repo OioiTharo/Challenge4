@@ -4,13 +4,12 @@ import CoreData
 
 class LivroViewModel: ObservableObject {
     private var context: NSManagedObjectContext
-
     @Published var selecionarItem: PhotosPickerItem?
-        
-    init(context: NSManagedObjectContext){
+    
+    init(context: NSManagedObjectContext) {
         self.context = context
     }
-        
+    
     func salvarLivro(livro: Livros) throws {
         print("Tentando salvar livro...")
         print("Título: \(livro.titulo ?? "Sem título")")
@@ -21,23 +20,27 @@ class LivroViewModel: ObservableObject {
         print("Categorias: \(livro.arrayCategorias)")
         
         if context.hasChanges {
-            do {
-                try context.save()
-                print("Livro salvo com sucesso!")
-            } catch {
-                print("Erro ao salvar livro: \(error.localizedDescription)")
-            }
+            try context.save()
+            print("Livro salvo com sucesso!")
+        } else {
+            print("Nenhuma mudança para salvar")
         }
     }
     
-    func deletarLivro(livro: Livros) throws{
-        do {
-            context.delete(livro)
-            try context.save()
-            print("Livro deletado com sucesso!")
-        } catch {
-            print("Erro ao deletar livro: \(error.localizedDescription)")
+    func deletarLivro(livro: Livros) throws {
+        context.delete(livro)
+        try context.save()
+        print("Livro deletado com sucesso!")
+    }
+}
+
+enum LivroError: Error {
+    case noChangesToSave
+    
+    var localizedDescription: String {
+        switch self {
+        case .noChangesToSave:
+            return "Não há alterações para salvar"
         }
     }
-
 }

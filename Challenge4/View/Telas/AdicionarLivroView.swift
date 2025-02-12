@@ -107,15 +107,19 @@ struct AdicionarLivroView: View {
                     }.padding(.horizontal, 20)
                 }
                 
-                if adcLivro{
+                if adcLivro == true{
                     HStack{
                         Button(action: {
                             livrosEntity.idLivro = UUID()
+                            livrosEntity.titulo = titulo
+                            livrosEntity.autor = autor
+                            livrosEntity.imagem = imagem
                             do {
                                 try livroViewModel.salvarLivro(livro: livrosEntity)
                                 presentationMode.wrappedValue.dismiss()
-                                onChange?()
                                 editando = false
+                                onChange?()
+                                print(titulo)
                             } catch {
                                 print("Erro ao salvar: \(error)")
                             }
@@ -140,72 +144,7 @@ struct AdicionarLivroView: View {
                         }
                     }.padding(.horizontal, 25).padding(.vertical)
                 }
-                /*if adcLivro || editando {
-                 HStack {
-                 Button(action: {
-                 if adcLivro {
-                 livrosEntity.idLivro = UUID()
-                 }
-                 
-                 do {
-                 try livroViewModel.salvarLivro(livro: livrosEntity)
-                 presentationMode.wrappedValue.dismiss()
-                 onChange?()
-                 editando = false
-                 } catch {
-                 print("Erro ao salvar: \(error)")
-                 }
-                 }) {
-                 if editando == true{
-                 Text("Salvar alterações" )
-                 .foregroundColor(.white)
-                 .padding(10)
-                 .frame(maxWidth: .infinity)
-                 .background(.roxoEscuro)
-                 .cornerRadius(14)
-                 .padding(.horizontal, 10)
-                 .alert(isPresented: $mostrarAlerta) {
-                 Alert(
-                 title: Text("Cuidado!"),
-                 message: Text("Tem certeza que deseja alterar essa leitura? 🤔"),
-                 primaryButton: .destructive(Text("Alterar")) {
-                 do {
-                 try livroViewModel.deletarLivro(livro: livrosEntity)
-                 presentationMode.wrappedValue.dismiss()
-                 } catch {
-                 print("Erro ao deletar: \(error)")
-                 }
-                 },
-                 secondaryButton: .cancel()
-                 )
-                 }
-                 } else{
-                 Text("Adicionar")
-                 .foregroundColor(.white)
-                 .frame(width: 155, height: 40)
-                 .background(.roxoEscuro)
-                 .cornerRadius(14)
-                 }
-                 }
-                 .disabled(titulo.isEmpty || autor.isEmpty)
-                 
-                 Spacer()
-                 if adcLivro == true{
-                 Button(action: {
-                 presentationMode.wrappedValue.dismiss()
-                 editando = false
-                 }){
-                 Text("Cancelar")
-                 .foregroundColor(.white)
-                 .frame(width: 155, height: 40)
-                 .background(.rosa)
-                 .cornerRadius(14)
-                 }
-                 }
-                 }.padding(.horizontal, 25).padding(.vertical)
-                 
-                 
-                 }*/else{
+               else{
                      if editando{
                          Button(action: {
                              mostrarAlerta2 = true
@@ -223,6 +162,9 @@ struct AdicionarLivroView: View {
                                     title: Text("Atençao!"),
                                     message: Text("As informações anteriores serão alteradas!"),
                                     primaryButton: .default(Text("Alterar")) {
+                                        livrosEntity.titulo = titulo
+                                        livrosEntity.autor = autor
+                                        livrosEntity.imagem = imagem
                                         do {
                                             try livroViewModel.salvarLivro(livro: livrosEntity)
                                             presentationMode.wrappedValue.dismiss()
