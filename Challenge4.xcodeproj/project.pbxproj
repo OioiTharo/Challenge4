@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */; };
-		3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */; };
 		3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BDA522D4AA39B002BE019 /* ContentView.swift */; };
 		3B1BDA552D4AA39C002BE019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1BDA542D4AA39C002BE019 /* Assets.xcassets */; };
 		3B1BDA592D4AA39C002BE019 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1BDA582D4AA39C002BE019 /* Preview Assets.xcassets */; };
@@ -28,11 +27,8 @@
 		3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */; };
 		E31530B22D514D3D006FD454 /* LivroAmostra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31530B12D514D3D006FD454 /* LivroAmostra.swift */; };
 		E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */; };
-		E38DE1EC2D4D62CD002741F0 /* Meta+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1E82D4D62CD002741F0 /* Meta+CoreDataClass.swift */; };
-		E38DE1EE2D4D62CD002741F0 /* Livros+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */; };
 		E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */; };
 		E38DE1F32D4D6341002741F0 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */; };
-		E38DE1F52D4D6384002741F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +51,6 @@
 /* Begin PBXFileReference section */
 		3B1BDA482D4AA39B002BE019 /* Challenge4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4App.swift; sourceTree = "<group>"; };
-		3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenge4.xcdatamodel; sourceTree = "<group>"; };
 		3B1BDA522D4AA39B002BE019 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B1BDA542D4AA39C002BE019 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B1BDA562D4AA39C002BE019 /* Challenge4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Challenge4.entitlements; sourceTree = "<group>"; };
@@ -78,11 +73,8 @@
 		3BC4663E2D4C1D8100D69503 /* BotaoPrincipal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoPrincipal.swift; sourceTree = "<group>"; };
 		E31530B12D514D3D006FD454 /* LivroAmostra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroAmostra.swift; sourceTree = "<group>"; };
 		E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarCapa.swift; sourceTree = "<group>"; };
-		E38DE1E82D4D62CD002741F0 /* Meta+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meta+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Livros+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroViewModel.swift; sourceTree = "<group>"; };
 		E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
-		E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +130,6 @@
 				3B1BDA4B2D4AA39B002BE019 /* Challenge4App.swift */,
 				3B1BDA542D4AA39C002BE019 /* Assets.xcassets */,
 				3B1BDA562D4AA39C002BE019 /* Challenge4.entitlements */,
-				3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */,
 				3B1BDA572D4AA39C002BE019 /* Preview Content */,
 			);
 			path = Challenge4;
@@ -172,9 +163,6 @@
 		E3433FA02D4AA50200FDDA13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E38DE1E82D4D62CD002741F0 /* Meta+CoreDataClass.swift */,
-				E38DE1EA2D4D62CD002741F0 /* Livros+CoreDataClass.swift */,
-				E38DE1F42D4D6384002741F0 /* CoreDataManager.swift */,
 				3B6A37352D51398600FAE5B8 /* Categorias.swift */,
 			);
 			path = Model;
@@ -352,13 +340,9 @@
 				3B3915D72D4BEC3400A05FBB /* BarraNavegacao.swift in Sources */,
 				3B34D00C2D4D3E03004B2AC8 /* BarraPesquisa.swift in Sources */,
 				E31530B22D514D3D006FD454 /* LivroAmostra.swift in Sources */,
-				3B1BDA512D4AA39B002BE019 /* Challenge4.xcdatamodeld in Sources */,
 				3B34D0102D4D5384004B2AC8 /* MetaSheet.swift in Sources */,
 				3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */,
 				3B1BDA4C2D4AA39B002BE019 /* Challenge4App.swift in Sources */,
-				E38DE1F52D4D6384002741F0 /* CoreDataManager.swift in Sources */,
-				E38DE1EC2D4D62CD002741F0 /* Meta+CoreDataClass.swift in Sources */,
-				E38DE1EE2D4D62CD002741F0 /* Livros+CoreDataClass.swift in Sources */,
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
 				E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */,
@@ -739,19 +723,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3B1BDA4F2D4AA39B002BE019 /* Challenge4.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */,
-			);
-			currentVersion = 3B1BDA502D4AA39B002BE019 /* Challenge4.xcdatamodel */;
-			path = Challenge4.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3B1BDA402D4AA39B002BE019 /* Project object */;
 }
