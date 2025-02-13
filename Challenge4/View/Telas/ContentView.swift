@@ -4,7 +4,7 @@ import SwiftData
 struct ContentView: View {
     @Query private var livro: [Livros]
     @Query private var metas: [Metas]
-    
+    let notificacoes = Notificacoes()
     @State private var mostrarSheetMeta = false
     @State private var progresso: Double = 0
     
@@ -39,6 +39,7 @@ struct ContentView: View {
     
     
     var body: some View {
+       
         VStack(alignment: .leading){
             
             HStack(alignment: .top){
@@ -54,7 +55,9 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal, 20).padding(.top, 25)
-            
+            .onAppear {
+                notificacoes.permissaoNotificacao()
+            }
             if ultimosLivros.isEmpty{
                 Spacer()
             }
