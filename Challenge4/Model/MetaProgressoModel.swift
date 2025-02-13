@@ -2,41 +2,17 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-class MetaProgressModel: ObservableObject {
-    @Published
-    private var modelContext: ModelContext
-    var progresso: Double = 0.0
+@Observable
+class MetaProgressModel {
+    private var progresso: Double = 0.0
     
-    init(modelContext: ModelContext) {
-        self.modelContext = modelContext
+    func getMeta(_ metas: [Metas]) -> Metas {
+        return metas.first ?? Metas(numeroMeta: 0)
     }
     
-    func getMeta() -> Metas? {
-        let descriptor = FetchDescriptor<Metas>()
-        
-        do {
-            let metas = try modelContext.fetch(descriptor)
-            return metas.first ?? Metas(numeroMeta: 0)
-        } catch {
-            print("Erro ao buscar meta: \(error)")
-            return Metas(numeroMeta: 0)
-        }
-    }
-    
-    func getLivros() -> [Livros] {
-        let descriptor = FetchDescriptor<Livros>(
-            predicate: #Predicate<Livros> { livro in
-                livro.titulo != nil
-            },
-            sortBy: [SortDescriptor(\Livros.titulo, order: .forward)]
-        )
-        
-        do {
-            return try modelContext.fetch(descriptor)
-        } catch {
-            print("Erro ao buscar livros: \(error)")
-            return []
-        }
+    func getLivros(_ livros: [Livros]) -> [Livros] {
+        return livros.filter { $0.titulo != nil }
+            .sorted { $0.titulo ?? "" < $1.titulo ?? "" }
     }
     
     func calcularProgressoBarra(progresso: Double) -> Double {
@@ -47,15 +23,14 @@ class MetaProgressModel: ObservableObject {
         }
     }
     
-    func calcularMeta() {
-        let livros = getLivros()
-        guard let meta = getMeta() else { return }
-        
+    func calcularMeta(livros: [Livros], meta: Metas) -> Double {
         let qtdLivros = livros.count
         let numeroMeta = Int(meta.numeroMeta)
         
-        progresso = numeroMeta > 0 ? Double(qtdLivros) / Double(numeroMeta) : 0.0
+        let progresso = numeroMeta > 0 ? Double(qtdLivros) / Double(numeroMeta) : 0.0
         
         print("Livros: \(qtdLivros), Meta: \(numeroMeta), Progresso: \(progresso)")
+        
+        return progresso
     }
 }

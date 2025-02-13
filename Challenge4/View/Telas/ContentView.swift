@@ -2,21 +2,16 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-//    @Environment(\.modelContext) private var viewContext
     @Query private var livro: [Livros]
+    @Query private var metas: [Metas]
     
     @State private var mostrarSheetMeta = false
-    @State private var mostrarSheetLeitura = false
-    @StateObject private var metaModel: MetaProgressModel
-
-    @Query private var metas: [Metas]
-
-    init(modelContext: ModelContext) {
-        _metaModel = StateObject(wrappedValue: MetaProgressModel(modelContext: modelContext))
-    }
+    @State private var progresso: Double = 0
+    
+    let metaProgressModel = MetaProgressModel()
     
     var metaEntity: Metas {
-        metas.first ?? Metas(numeroMeta: 0)
+        metaProgressModel.getMeta(metas)
     }
     
     private var metaNumerica: Double {
@@ -24,17 +19,14 @@ struct ContentView: View {
     }
     
     @Query(
-        filter: #Predicate<Livros> {
-            livro in
+        filter: #Predicate<Livros> { livro in
             livro.titulo != nil
         },
         sort: \Livros.titulo,
         order: .reverse
     ) private var ultimosLivros: [Livros]
-
+    
     var ultimosTresLivros: [Livros] {
-        //Array(ultimosLivros.prefix(3))
-        
         let livrosValidos = ultimosLivros.filter { livro in
             guard let titulo = livro.titulo, !titulo.isEmpty,
                   let autor = livro.autor, !autor.isEmpty else {
@@ -44,6 +36,7 @@ struct ContentView: View {
         }
         return Array(livrosValidos.prefix(3))
     }
+    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -66,25 +59,24 @@ struct ContentView: View {
                 Spacer()
             }
             
-            BarraProgresso(progresso: $metaModel.progresso)
+            BarraProgresso(progresso: $progresso)
                 .frame(maxWidth: 500)
             
-            HStack {
+            HStack{
                 Spacer()
-                Button(action: {
-                    mostrarSheetLeitura = true
-                }) {
-                    Text("Adicionar Leitura")
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 60)
-                        .background(.roxoEscuro)
-                        .cornerRadius(25)
-                }
-                .padding(.horizontal, 30)
-                .padding(.vertical, -80)
+                NavigationLink(destination: AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
+                    .navigationBarBackButtonHidden(true)){
+                        Text("Adicionar Leitura")
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 60)
+                            .background(.roxoEscuro)
+                            .cornerRadius(25)
+                        
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, -80)
                 Spacer()
             }
-            
             if !ultimosLivros.isEmpty{
                 Text("Últimas Leituras")
                     .padding(.leading, 20)
@@ -102,23 +94,20 @@ struct ContentView: View {
         }
         .padding(.bottom, 50)
         .sheet(isPresented: $mostrarSheetMeta) {
-            MetaSheet(
-                metaEntity: metaEntity,
-                mostrarSheet: $mostrarSheetMeta,
-                onSave: metaModel.calcularMeta
-            )
+            MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
         }
-        .sheet(isPresented: $mostrarSheetLeitura) {
-            //            AdicionarLivroView(
-            //                livrosEntity: Livros(context: viewContext),
-            //                context: viewContext,
-            //                adcLivro: true
-            //            )
+        .onAppear {
+            calcularMeta()
         }
         
     }
+    private func salvarEVoltar() {
+        calcularMeta()
+        mostrarSheetMeta = false
+    }
+    
+    private func calcularMeta() {
+        progresso = metaProgressModel.calcularMeta(livros: ultimosLivros, meta: metaEntity)
+    }
 }
 
-//#Preview {
-//    ContentView(livro: livro)
-//}

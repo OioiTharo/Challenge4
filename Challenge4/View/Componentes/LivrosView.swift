@@ -13,11 +13,6 @@ struct LivrosView: View {
         sort: \Livros.titulo,
         order: .reverse
     ) private var allLivros: [Livros]
-//    @FetchRequest(
-//        entity: Livros.entity(),
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Livros.titulo, ascending: true)],
-//        predicate: NSPredicate(value: true)
-//    ) var allLivros: FetchedResults<Livros>
     
     var filteredLivros: [Livros] {
         allLivros.filter { livro in
