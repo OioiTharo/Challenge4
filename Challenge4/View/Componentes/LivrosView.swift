@@ -6,10 +6,6 @@ struct LivrosView: View {
     @State private var categoriaSelecionada: String? = nil
     
     @Query(
-        filter: #Predicate<Livros> {
-            livro in
-            livro.titulo != nil
-        },
         sort: \Livros.titulo,
         order: .reverse
     ) private var allLivros: [Livros]
@@ -49,33 +45,50 @@ struct LivrosView: View {
             Text("Sua estante")
                 .padding(.horizontal, 20)
             
-            if filteredLivros.isEmpty {
+            if allLivros.count == 0{
                 HStack{
                     Spacer()
                     VStack{
                         Spacer()
-                        Image("livroTriste")
+                        Image("semLivros")
                             .resizable()
                             .frame(width: 100, height: 122)
-                        Text("Nenhum livro encontrado")
+                        Text("Adicione uma nova leitura!")
                             .opacity(0.6)
                         
                         Spacer()
                     }
                     Spacer()
                 }
-            } else {
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 5) {
-                        ForEach(filteredLivros, id: \.self) { livro in
-                            if let titulo = livro.titulo, !titulo.isEmpty {
-                                ZStack {
-                                    LivroAmostra(livro: livro)
+            } else{
+                if filteredLivros.isEmpty {
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Spacer()
+                            Image("livroTriste")
+                                .resizable()
+                                .frame(width: 100, height: 122)
+                            Text("Nenhum livro encontrado")
+                                .opacity(0.6)
+                            
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 5) {
+                            ForEach(filteredLivros, id: \.self) { livro in
+                                if let titulo = livro.titulo, !titulo.isEmpty {
+                                    ZStack {
+                                        LivroAmostra(livro: livro)
+                                    }
                                 }
                             }
                         }
-                    }
-                }.padding(.horizontal, 20)
+                    }.padding(.horizontal, 20)
+                }
             }
         }
     }
