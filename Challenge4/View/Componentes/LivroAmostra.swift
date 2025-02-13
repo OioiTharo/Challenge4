@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct LivroAmostra: View {
-//    @Environment(\.modelContext) private var viewContext
     var livro: Livros
     var body: some View {
         

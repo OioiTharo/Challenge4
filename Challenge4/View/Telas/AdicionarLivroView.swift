@@ -83,7 +83,7 @@ struct AdicionarLivroView: View {
                     }
                     if livro.comentario?.isEmpty ?? true {
                         HStack{
-                            Text("Escreva uma avaliação sobre...")
+                            Text("Como foi sua experiência literária?")
                                 .opacity(0.6)
                             Spacer()
                         }.padding(.horizontal, 35).padding(.top, 8)
@@ -206,7 +206,7 @@ struct AdicionarLivroView: View {
                             .alert(isPresented: $mostrarAlerta) {
                                 Alert(
                                     title: Text("Cuidado!"),
-                                    message: Text("Tem certeza de que deseja excluir esta leitura? Esta ação não pode ser desfeita. 🤔"),
+                                    message: Text("Tem certeza de que deseja excluir este livro? Está ação não poderá ser desfeita. 🤔"),
                                     primaryButton: .destructive(Text("Deletar")) {
                                         modelContext.delete(livro)
                                         try? modelContext.save()
@@ -228,4 +228,8 @@ struct AdicionarLivroView: View {
         }
         
     }
+}
+
+#Preview {
+    AdicionarLivroView(livro: Livros(titulo: "false"), editando: false, adcLivro: false)
 }

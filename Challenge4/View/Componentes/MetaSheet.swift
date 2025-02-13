@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct MetaSheet: View {
-    @Environment(\.modelContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     @Bindable var metaEntity: Metas
     @Binding var mostrarSheet: Bool
     var onSave: () -> Void
@@ -24,7 +24,7 @@ struct MetaSheet: View {
                 Button(action: {
                     if let novoNumero = Int16(metaText) {
                         metaEntity.numeroMeta = novoNumero
-                        try? viewContext.save()
+                        try? modelContext.save()
                         onSave()
                         mostrarSheet = false
                     }
