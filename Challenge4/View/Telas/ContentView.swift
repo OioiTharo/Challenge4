@@ -7,29 +7,28 @@ struct ContentView: View {
     let notificacoes = Notificacoes()
     @State private var mostrarSheetMeta = false
     @State private var progresso: Double = 0
+    @Environment(\.modelContext) private var modelContext
     
     let metaProgressModel = MetaProgressModel()
     
     var metaEntity: Metas {
-        metaProgressModel.getMeta(metas)
-    }
-    
-    private var metaNumerica: Double {
-        return Double(metaEntity.numeroMeta)
+        if metas.isEmpty {
+            let novaMeta = Metas(numeroMeta: 0)
+            modelContext.insert(novaMeta)
+            try? modelContext.save()
+            return novaMeta
+        }
+        return metaProgressModel.getMeta(metas)
     }
     
     @Query(
-        filter: #Predicate<Livros> { livro in
-            livro.titulo != nil
-        },
-        sort: \Livros.titulo,
+        sort: \Livros.dataCriacao, 
         order: .reverse
     ) private var ultimosLivros: [Livros]
-    
+
     var ultimosTresLivros: [Livros] {
         let livrosValidos = ultimosLivros.filter { livro in
-            guard let titulo = livro.titulo, !titulo.isEmpty,
-                  let autor = livro.autor, !autor.isEmpty else {
+            guard let titulo = livro.titulo, !titulo.isEmpty else {
                 return false
             }
             return true
@@ -43,15 +42,20 @@ struct ContentView: View {
         VStack(alignment: .leading){
             
             HStack(alignment: .top){
-                Text("Meta Anual de Leitura:")
+               
+                Text("Meta Anual de Leitura")
                     .padding(.bottom, 25)
                 Spacer()
+                
                 Button(action: {
                     mostrarSheetMeta = true
                 }) {
                     Image(systemName: "pencil")
                         .foregroundColor(.roxoEscuro)
                         .font(.title3)
+                }
+                NavigationLink(destination: Termos()) {
+                    Image(systemName: "info.circle")
                 }
             }
             .padding(.horizontal, 20).padding(.top, 25)
@@ -65,21 +69,25 @@ struct ContentView: View {
             BarraProgresso(progresso: $progresso)
                 .frame(maxWidth: 500)
             
-            HStack{
+            HStack {
                 Spacer()
-                NavigationLink(destination: AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
-                    .navigationBarBackButtonHidden(true)){
-                        Text("Adicionar Leitura")
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 60)
-                            .background(.roxoEscuro)
-                            .cornerRadius(25)
-                        
-                    }
-                    .padding(.horizontal, 30)
-                    .padding(.vertical, -80)
+                Button(action: {
+                    mostrarSheetLeitura = true
+                }) {
+                    Text("Adicionar Leitura")
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 60)
+                        .background(.roxoEscuro)
+                        .cornerRadius(25)
+                }
+                .padding(.horizontal, 30)
+                .padding(.vertical, -80)
                 Spacer()
             }
+            .sheet(isPresented: $mostrarSheetLeitura) {
+                AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
+            }
+            
             if !ultimosLivros.isEmpty{
                 Text("Últimas Leituras")
                     .padding(.leading, 20)
@@ -113,4 +121,3 @@ struct ContentView: View {
         progresso = metaProgressModel.calcularMeta(livros: ultimosLivros, meta: metaEntity)
     }
 }
-

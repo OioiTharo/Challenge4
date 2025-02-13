@@ -15,7 +15,7 @@ struct MeuApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            BarraNavegacao()
+            SplashView()
         }
         .modelContainer(container)
     }

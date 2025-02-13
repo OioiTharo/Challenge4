@@ -5,6 +5,7 @@ struct AdicionarLivroView: View {
     @Bindable var livro: Livros
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.presentationMode) var presentationMode
     @FocusState private var isFocused: Bool
     var onChange:(() -> Void)?
     @State var editando: Bool
@@ -13,6 +14,8 @@ struct AdicionarLivroView: View {
     @State private var titulo: String = ""
     @State private var autor: String = ""
     @State private var imagem: Data? = nil
+    @State private var mostrarAlerta = false
+    @State private var mostrarAlerta2 = false
     
     init(livro: Livros, editando: Bool = false, adcLivro: Bool = false) {
         self.livro = livro
@@ -33,7 +36,7 @@ struct AdicionarLivroView: View {
                 
                 AdicionarCapa(selecionarImagem: $imagem).disabled(!editando && !adcLivro)
                 
-                TextField("Título", text: $titulo)
+                TextField("Título*", text: $titulo)
                     .disabled(!editando && !adcLivro)
                     .font(.system(.title2, weight: .bold))
                     .padding(.horizontal, 30)
@@ -47,7 +50,7 @@ struct AdicionarLivroView: View {
                 Avaliacao(avaliacao: Binding(
                     get: { Int(livro.avaliacao ?? 0) },
                     set: { newValue in
-                        livro.avaliacao = Double(newValue)
+                        livro.avaliacao = Int(newValue)
                     }
                 )).disabled(!editando && !adcLivro)
                 
@@ -80,10 +83,17 @@ struct AdicionarLivroView: View {
                     }
                     if livro.comentario?.isEmpty ?? true {
                         HStack{
-                            Text("Escreva uma avaliação sobre...")
+                            Text("Como foi sua experiência literária?")
                                 .opacity(0.6)
                             Spacer()
                         }.padding(.horizontal, 35).padding(.top, 8)
+                    }
+                    if !editando && !adcLivro{
+                        HStack{
+                            Text("Sua avaliação:")
+                                .opacity(0.6)
+                            Spacer()
+                        }.padding(.horizontal, 25).padding(.top, -25)
                     }
                 }
                 .disabled(!editando && !adcLivro)
@@ -96,18 +106,14 @@ struct AdicionarLivroView: View {
                     }.padding(.horizontal, 20)
                 }
                 
-                if adcLivro || editando {
-                    HStack {
-                        Button(action: { // botao adcionar ou salvar alteracoes
+                if adcLivro == true{
+                    HStack{
+                        Button(action: {
                             livro.titulo = titulo
                             livro.autor = autor
                             livro.imagem = imagem
-                            print(titulo)
-                            
-                            if adcLivro {
-                                livro.idLivro = UUID()
-                                modelContext.insert(livro)
-                            }
+                            livro.idLivro = UUID()
+                            modelContext.insert(livro)
                             
                             do {
                                 try? modelContext.save()
@@ -117,17 +123,17 @@ struct AdicionarLivroView: View {
                             } catch {
                                 print("Erro ao salvar: \(error)")
                             }
-                        }) {
-                            Text(editando ? "Salvar alterações" : "Adicionar")
+                        }){
+                            Text("Adicionar")
                                 .foregroundColor(.white)
                                 .frame(width: 155, height: 40)
                                 .background(.roxoEscuro)
                                 .cornerRadius(14)
                         }
-                        .disabled(titulo.isEmpty || autor.isEmpty)
+                        .disabled(titulo.isEmpty)
                         Spacer()
                         Button(action: {
-                            dismiss()
+                            presentationMode.wrappedValue.dismiss()
                             editando = false
                         }){
                             Text("Cancelar")
@@ -137,36 +143,81 @@ struct AdicionarLivroView: View {
                                 .cornerRadius(14)
                         }
                     }.padding(.horizontal, 25).padding(.vertical)
-                    
-                    
-                }else{
-                    HStack{
-                        
+                }
+                else{
+                    if editando{
                         Button(action: {
-                            editando = true
-                        }){
-                            Text("Editar")
+                            mostrarAlerta2 = true
+                        }) {
+                            Text("Salvar alterações" )
                                 .foregroundColor(.white)
-                                .frame(width: 155, height: 40)
+                                .padding(10)
+                                .frame(maxWidth: .infinity)
                                 .background(.roxoEscuro)
                                 .cornerRadius(14)
+                                .padding(.horizontal, 20)
+                        }.disabled(titulo.isEmpty)
+                            .alert(isPresented: $mostrarAlerta2) {
+                                Alert(
+                                    title: Text("Atençao!"),
+                                    message: Text("As informações anteriores serão alteradas!"),
+                                    primaryButton: .default(Text("Alterar")) {
+                                        
+                                        livro.titulo = titulo
+                                        livro.autor = autor
+                                        livro.imagem = imagem
+                                        modelContext.insert(livro)
+                                        
+                                        do {
+                                            try? modelContext.save()
+                                            dismiss()
+                                            onChange?()
+                                            editando = false
+                                        } catch {
+                                            print("Erro ao salvar: \(error)")
+                                        }
+                                    },
+                                    secondaryButton: .destructive(Text("Cancelar"))
+                                )
+                            }
+                    } else{
+                        HStack{
+                            
+                            Button(action: {
+                                editando = true
+                            }){
+                                Text("Editar")
+                                    .foregroundColor(.white)
+                                    .frame(width: 155, height: 40)
+                                    .background(.roxoEscuro)
+                                    .cornerRadius(14)
+                            }
+                            
+                            Spacer()
+                            Button(action: {
+                                mostrarAlerta = true
+                            }) {
+                                Text("Deletar")
+                                    .foregroundColor(.white)
+                                    .frame(width: 155, height: 40)
+                                    .background(.rosa)
+                                    .cornerRadius(14)
+                            }
+                            .alert(isPresented: $mostrarAlerta) {
+                                Alert(
+                                    title: Text("Cuidado!"),
+                                    message: Text("Tem certeza de que deseja excluir este livro? Está ação não poderá ser desfeita. 🤔"),
+                                    primaryButton: .destructive(Text("Deletar")) {
+                                        modelContext.delete(livro)
+                                        try? modelContext.save()
+                                        dismiss()
+                                    },
+                                    secondaryButton: .cancel()
+                                )
+                            }
                         }
-                        
-                        Spacer()
-                        Button(action: {
-                            modelContext.delete(livro)
-                            try? modelContext.save()
-                            dismiss()
-                          
-                        }) {
-                            Text("Deletar")
-                                .foregroundColor(.white)
-                                .frame(width: 155, height: 40)
-                                .background(.rosa)
-                                .cornerRadius(14)
-                        }
+                        .padding(.horizontal, 25).padding(.vertical)
                     }
-                    .padding(.horizontal, 25).padding(.vertical)
                     
                     
                 }
@@ -177,4 +228,8 @@ struct AdicionarLivroView: View {
         }
         
     }
+}
+
+#Preview {
+    AdicionarLivroView(livro: Livros(titulo: "false"), editando: false, adcLivro: false)
 }

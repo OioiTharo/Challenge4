@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct LivroAmostra: View {
-//    @Environment(\.modelContext) private var viewContext
     var livro: Livros
     var body: some View {
         
@@ -50,7 +49,7 @@ struct LivroAmostra: View {
                                     .foregroundColor(.yellow)
                                     .font(.system(size: 10))
                                 
-                                Text(String(format: "%.1f", livro.avaliacao ?? 0))
+                                Text(String(livro.avaliacao ?? 0))
                                     .font(.system(size: 10, weight: .medium))
                             }
                             .padding(.vertical, 4)
