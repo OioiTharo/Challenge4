@@ -14,7 +14,7 @@ struct LivroAmostra: View {
                         if let imageData = livro.imagem, let uiImage = UIImage(data: imageData) {
                             Image(uiImage: uiImage)
                                 .resizable()
-                                .aspectRatio(2/3, contentMode: .fit)
+                                .aspectRatio(150/220, contentMode: .fill)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                         } else {
                             Rectangle()

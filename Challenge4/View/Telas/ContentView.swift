@@ -53,7 +53,7 @@ struct ContentView: View {
                         .foregroundColor(.roxoEscuro)
                         .font(.title3)
                 }
-                NavigationLink(destination: Termos()) {
+                NavigationLink(destination: TermosdeUso()) {
                     Image(systemName: "info.circle")
                 }
             }
