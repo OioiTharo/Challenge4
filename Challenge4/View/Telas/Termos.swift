@@ -131,7 +131,6 @@ struct Termos: View {
     }
 }
 
-// Componentes auxiliares
 struct SecaoTermos<Content: View>: View {
     let titulo: String
     let content: Content
