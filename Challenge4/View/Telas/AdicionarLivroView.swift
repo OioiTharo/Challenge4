@@ -34,7 +34,21 @@ struct AdicionarLivroView: View {
                     Spacer()
                 }.padding(.horizontal, 20).padding(.bottom).padding(.top)
                 
-                AdicionarCapa(selecionarImagem: $imagem).disabled(!editando && !adcLivro)
+                if(editando || adcLivro){
+                    AdicionarCapa(selecionarImagem: $imagem)
+                }else{
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: 150, height: 220)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .overlay(
+                            VStack {
+                                Image(systemName: "photo")
+                                    .foregroundColor(.white)
+                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            }
+                        )
+                }
                 
                 TextField("Título*", text: $titulo)
                     .disabled(!editando && !adcLivro)

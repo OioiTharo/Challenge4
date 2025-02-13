@@ -18,7 +18,7 @@ struct LivroAmostra: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                         } else {
                             Rectangle()
-                                .fill(Color.gray)
+                                .fill(Color.gray.opacity(0.3))
                                 .aspectRatio(2/3, contentMode: .fit)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                                 .overlay(

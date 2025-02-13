@@ -55,6 +55,9 @@ struct ContentView: View {
                         .foregroundColor(.roxoEscuro)
                         .font(.title3)
                 }
+                .sheet(isPresented: $mostrarSheetMeta) {
+                    MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
+                }
                 NavigationLink(destination: TermosdeUso()) {
                     Image(systemName: "info.circle")
                 }
@@ -105,9 +108,6 @@ struct ContentView: View {
             }
         }
         .padding(.bottom, 50)
-        .sheet(isPresented: $mostrarSheetMeta) {
-            MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
-        }
         .onAppear {
             calcularMeta()
         }
