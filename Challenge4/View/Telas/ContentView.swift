@@ -5,6 +5,7 @@ struct ContentView: View {
     @Query private var livro: [Livros]
     @Query private var metas: [Metas]
     let notificacoes = Notificacoes()
+    @State private var mostrarSheetLeitura = false
     @State private var mostrarSheetMeta = false
     @State private var progresso: Double = 0
     @Environment(\.modelContext) private var modelContext
