@@ -4,32 +4,31 @@ import SwiftData
 struct ContentView: View {
     @Query private var livro: [Livros]
     @Query private var metas: [Metas]
-    
+    @State private var mostrarSheetLeitura = false
     @State private var mostrarSheetMeta = false
     @State private var progresso: Double = 0
+    @Environment(\.modelContext) private var viewContext
     
     let metaProgressModel = MetaProgressModel()
     
     var metaEntity: Metas {
-        metaProgressModel.getMeta(metas)
-    }
-    
-    private var metaNumerica: Double {
-        return Double(metaEntity.numeroMeta)
+        if metas.isEmpty {
+            let novaMeta = Metas(numeroMeta: 0)
+            viewContext.insert(novaMeta)
+            try? viewContext.save()
+            return novaMeta
+        }
+        return metaProgressModel.getMeta(metas)
     }
     
     @Query(
-        filter: #Predicate<Livros> { livro in
-            livro.titulo != nil
-        },
-        sort: \Livros.titulo,
+        sort: \Livros.dataCriacao, 
         order: .reverse
     ) private var ultimosLivros: [Livros]
-    
+
     var ultimosTresLivros: [Livros] {
         let livrosValidos = ultimosLivros.filter { livro in
-            guard let titulo = livro.titulo, !titulo.isEmpty,
-                  let autor = livro.autor, !autor.isEmpty else {
+            guard let titulo = livro.titulo, !titulo.isEmpty else {
                 return false
             }
             return true
@@ -62,21 +61,25 @@ struct ContentView: View {
             BarraProgresso(progresso: $progresso)
                 .frame(maxWidth: 500)
             
-            HStack{
+            HStack {
                 Spacer()
-                NavigationLink(destination: AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
-                    .navigationBarBackButtonHidden(true)){
-                        Text("Adicionar Leitura")
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 60)
-                            .background(.roxoEscuro)
-                            .cornerRadius(25)
-                        
-                    }
-                    .padding(.horizontal, 30)
-                    .padding(.vertical, -80)
+                Button(action: {
+                    mostrarSheetLeitura = true
+                }) {
+                    Text("Adicionar Leitura")
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 60)
+                        .background(.roxoEscuro)
+                        .cornerRadius(25)
+                }
+                .padding(.horizontal, 30)
+                .padding(.vertical, -80)
                 Spacer()
             }
+            .sheet(isPresented: $mostrarSheetLeitura) {
+                AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
+            }
+            
             if !ultimosLivros.isEmpty{
                 Text("Últimas Leituras")
                     .padding(.leading, 20)

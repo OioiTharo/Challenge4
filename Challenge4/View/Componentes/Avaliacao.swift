@@ -17,9 +17,9 @@ struct Avaliacao: View {
                 }
             }
             HStack{
-                Text("\(avaliacao).0")
+                Text("\(avaliacao)")
                     .padding(.trailing, -5)
-                Text("/ 5.0")
+                Text("/ 5")
                     .opacity(0.3)
             }
         }

@@ -4,44 +4,40 @@ import SwiftUI
 struct BarraProgresso: View {
     @Binding var progresso: Double
     @Query private var metas: [Metas]
+    @Query private var livros: [Livros]
     
     let metaProgressModel = MetaProgressModel()
-        
-        var metaEntity: Metas {
-            metaProgressModel.getMeta(metas)
-        }
-
     
-    @Query(
-        filter: #Predicate<Livros> {
-            livro in
-            livro.titulo != nil
-        },
-        sort: \Livros.titulo,
-        order: .reverse
-    ) private var ultimosLivros: [Livros]
-
+    var metaEntity: Metas {
+        metaProgressModel.getMeta(metas)
+    }
     
     var progressoBarra: Double {
-           return metaProgressModel.calcularProgressoBarra(progresso: progresso)
-       }
+        return metaProgressModel.calcularProgressoBarra(progresso: progresso)
+    }
     
     var body: some View {
         ZStack{
             VStack {
-                if progresso >= 1{
-                    Text("🥳")
+                if livros.count == 0 {
+                    Text("😕")
                         .font(.system(size: 50))
-                    Text("Meta Alcançada")
-                }else{
-                    if progresso == 0 {
-                        Text("😕")
+                    Text("Nenhuma meta adicionada!")
+                } else{
+                    if progresso >= 1{
+                        Text("🥳")
                             .font(.system(size: 50))
-                        Text("Nenhuma leitura adicionada!")
-                    } else {
-                        Text("\(Int((progresso*100).rounded()))%")
-                            .font(.system(size: 50))
-                        Text("Você já leu \(ultimosLivros.count) de \(metaEntity.numeroMeta) livros!")
+                        Text("Meta Alcançada")
+                    }else{
+                        if progresso == 0 {
+                            Text("😕")
+                                .font(.system(size: 50))
+                            Text("Nenhuma leitura adicionada!")
+                        } else {
+                            Text("\(Int((progresso*100).rounded()))%")
+                                .font(.system(size: 50))
+                            Text("Você já leu \(livros.count) de \(metaEntity.numeroMeta) livros!")
+                        }
                     }
                 }
             }
@@ -60,7 +56,7 @@ struct BarraProgresso: View {
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                 .fill(.roxoClarissimo)
                 .rotationEffect(.degrees(36))
-           
+            
             Circle()
                 .trim(from: 0.4, to: CGFloat(progressoBarra))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
@@ -68,14 +64,14 @@ struct BarraProgresso: View {
                     LinearGradient(
                         gradient: Gradient(colors: [.roxoEscuro, .rosa]),
                         startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
+                        endPoint: .bottomTrailing
                     )
                 )
                 .rotationEffect(.degrees(36))
             
             
         }.padding(.horizontal,50)
-            
+        
     }
 }
 

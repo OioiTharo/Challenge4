@@ -8,9 +8,10 @@ import SwiftUI
     var categorias: String?
     var comentario: String?
     var imagem: Data?
-    var avaliacao: Double?
-    
-    init(titulo: String, autor: String? = nil, categorias: String? = nil, comentario: String? = nil, imagem: Data? = nil, avaliacao: Double? = nil) {
+    var avaliacao: Int?
+    var dataCriacao: Date
+
+    init(titulo: String, autor: String? = nil, categorias: String? = nil, comentario: String? = nil, imagem: Data? = nil, avaliacao: Int? = nil) {
         self.idLivro = UUID()
         self.titulo = titulo
         self.autor = autor
@@ -18,6 +19,7 @@ import SwiftUI
         self.comentario = comentario
         self.imagem = imagem
         self.avaliacao = avaliacao
+        self.dataCriacao = Date()
     }
     
     var arrayCategorias: [String] {
