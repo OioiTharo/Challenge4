@@ -80,7 +80,7 @@ struct AdicionarLivroView: View {
                     }
                     if livro.comentario?.isEmpty ?? true {
                         HStack{
-                            Text("Escreva uma avaliação sobre...")
+                            Text("Como foi sua experiência literária?")
                                 .opacity(0.6)
                             Spacer()
                         }.padding(.horizontal, 35).padding(.top, 8)
