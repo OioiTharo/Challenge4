@@ -4,8 +4,7 @@ import SwiftData
 struct AdicionarLivroView: View {
     @Bindable var livro: Livros
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) private var viewContext
-    @StateObject private var livroViewModel: LivroViewModel
+    @Environment(\.modelContext) private var modelContext
     @FocusState private var isFocused: Bool
     var onChange:(() -> Void)?
     @State var editando: Bool
@@ -17,7 +16,6 @@ struct AdicionarLivroView: View {
     
     init(livro: Livros, editando: Bool = false, adcLivro: Bool = false) {
         self.livro = livro
-        _livroViewModel = StateObject(wrappedValue: LivroViewModel())
         _titulo = State(initialValue: livro.titulo ?? "")
         _autor = State(initialValue: livro.autor ?? "")
         _imagem = State(initialValue: livro.imagem)
@@ -108,10 +106,11 @@ struct AdicionarLivroView: View {
                             
                             if adcLivro {
                                 livro.idLivro = UUID()
+                                modelContext.insert(livro)
                             }
                             
                             do {
-                                try? livroViewModel.salvarLivro(livro: livro)
+                                try? modelContext.save()
                                 dismiss()
                                 onChange?()
                                 editando = false
@@ -155,13 +154,10 @@ struct AdicionarLivroView: View {
                         
                         Spacer()
                         Button(action: {
-                            viewContext.delete(livro)
-                            do {
-                                try? viewContext.save()
-                                dismiss()
-                            } catch {
-                                print("Erro ao deletar: \(error)")
-                            }
+                            modelContext.delete(livro)
+                            try? modelContext.save()
+                            dismiss()
+                          
                         }) {
                             Text("Deletar")
                                 .foregroundColor(.white)
