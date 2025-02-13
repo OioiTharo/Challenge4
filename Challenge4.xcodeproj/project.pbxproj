@@ -21,6 +21,8 @@
 		3B34D0142D4D6535004B2AC8 /* BotaoCategoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */; };
 		3B3915D72D4BEC3400A05FBB /* BarraNavegacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D62D4BEC3400A05FBB /* BarraNavegacao.swift */; };
 		3B3915D92D4BF00400A05FBB /* LivrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3915D82D4BF00400A05FBB /* LivrosView.swift */; };
+		3B4CB7FE2D5E61B60063A8FA /* MetaProgressoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4CB7FD2D5E61B60063A8FA /* MetaProgressoModel.swift */; };
+		3B6144BD2D5E60EE00C9E5FF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6144BC2D5E60EE00C9E5FF /* Launch Screen.storyboard */; };
 		3B6A37342D5138C000FAE5B8 /* AdicionarLivroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */; };
 		3B6A37362D51398600FAE5B8 /* Categorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A37352D51398600FAE5B8 /* Categorias.swift */; };
 		3B9E644A2D514599007A3437 /* FiltroCategorias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E64492D514599007A3437 /* FiltroCategorias.swift */; };
@@ -68,6 +70,8 @@
 		3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoCategoria.swift; sourceTree = "<group>"; };
 		3B3915D62D4BEC3400A05FBB /* BarraNavegacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraNavegacao.swift; sourceTree = "<group>"; };
 		3B3915D82D4BF00400A05FBB /* LivrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LivrosView.swift; path = Challenge4/View/Componentes/LivrosView.swift; sourceTree = SOURCE_ROOT; };
+		3B4CB7FD2D5E61B60063A8FA /* MetaProgressoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaProgressoModel.swift; sourceTree = "<group>"; };
+		3B6144BC2D5E60EE00C9E5FF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarLivroView.swift; sourceTree = "<group>"; };
 		3B6A37352D51398600FAE5B8 /* Categorias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorias.swift; sourceTree = "<group>"; };
 		3B9E64492D514599007A3437 /* FiltroCategorias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltroCategorias.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */,
 				3B6A37352D51398600FAE5B8 /* Categorias.swift */,
+				3B4CB7FD2D5E61B60063A8FA /* MetaProgressoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */,
 				E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */,
 				3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */,
+				3B6144BC2D5E60EE00C9E5FF /* Launch Screen.storyboard */,
 			);
 			path = Telas;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B6144BD2D5E60EE00C9E5FF /* Launch Screen.storyboard in Resources */,
 				3B1BDA592D4AA39C002BE019 /* Preview Assets.xcassets in Resources */,
 				3B1BDA552D4AA39C002BE019 /* Assets.xcassets in Resources */,
 			);
@@ -350,6 +357,7 @@
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
 				E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */,
+				3B4CB7FE2D5E61B60063A8FA /* MetaProgressoModel.swift in Sources */,
 				3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
 				3B6A37362D51398600FAE5B8 /* Categorias.swift in Sources */,

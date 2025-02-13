@@ -6,9 +6,14 @@ struct ContentView: View {
     @Query private var livro: [Livros]
     
     @State private var mostrarSheetMeta = false
-    @State private var progresso: Double = 0
-    
+    @State private var mostrarSheetLeitura = false
+    @StateObject private var metaModel: MetaProgressModel
+
     @Query private var metas: [Metas]
+
+    init(modelContext: ModelContext) {
+        _metaModel = StateObject(wrappedValue: MetaProgressModel(modelContext: modelContext))
+    }
     
     var metaEntity: Metas {
         metas.first ?? Metas(numeroMeta: 0)
@@ -28,12 +33,21 @@ struct ContentView: View {
     ) private var ultimosLivros: [Livros]
 
     var ultimosTresLivros: [Livros] {
-        Array(ultimosLivros.prefix(3))
+        //Array(ultimosLivros.prefix(3))
+        
+        let livrosValidos = ultimosLivros.filter { livro in
+            guard let titulo = livro.titulo, !titulo.isEmpty,
+                  let autor = livro.autor, !autor.isEmpty else {
+                return false
+            }
+            return true
+        }
+        return Array(livrosValidos.prefix(3))
     }
     
     var body: some View {
         VStack(alignment: .leading){
-    
+            
             HStack(alignment: .top){
                 Text("Meta Anual de Leitura:")
                     .padding(.bottom, 25)
@@ -52,24 +66,25 @@ struct ContentView: View {
                 Spacer()
             }
             
-            BarraProgresso(progresso: $progresso)
+            BarraProgresso(progresso: $metaModel.progresso)
                 .frame(maxWidth: 500)
-           
-            HStack{
+            
+            HStack {
                 Spacer()
-                NavigationLink(destination: AdicionarLivroView(livro: Livros(titulo: ""), adcLivro: true)
-                    .navigationBarBackButtonHidden(true)){
-                        Text("Adicionar Leitura")
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 60)
-                            .background(.roxoEscuro)
-                            .cornerRadius(25)
-                        
-                    }
-                    .padding(.horizontal, 30)
-                    .padding(.vertical, -80)
+                Button(action: {
+                    mostrarSheetLeitura = true
+                }) {
+                    Text("Adicionar Leitura")
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 60)
+                        .background(.roxoEscuro)
+                        .cornerRadius(25)
+                }
+                .padding(.horizontal, 30)
+                .padding(.vertical, -80)
                 Spacer()
             }
+            
             if !ultimosLivros.isEmpty{
                 Text("Últimas Leituras")
                     .padding(.leading, 20)
@@ -87,27 +102,20 @@ struct ContentView: View {
         }
         .padding(.bottom, 50)
         .sheet(isPresented: $mostrarSheetMeta) {
-            MetaSheet(metaEntity: metaEntity, mostrarSheet: $mostrarSheetMeta, onSave: calcularMeta)
+            MetaSheet(
+                metaEntity: metaEntity,
+                mostrarSheet: $mostrarSheetMeta,
+                onSave: metaModel.calcularMeta
+            )
         }
-        .onAppear {
-            calcularMeta()
+        .sheet(isPresented: $mostrarSheetLeitura) {
+            //            AdicionarLivroView(
+            //                livrosEntity: Livros(context: viewContext),
+            //                context: viewContext,
+            //                adcLivro: true
+            //            )
         }
         
-    }
-    private func salvarEVoltar() {
-        calcularMeta()
-        mostrarSheetMeta = false
-    }
-    
-    private func calcularMeta() {
-        print("Total de livros: \(ultimosLivros.count)")
-        
-        let qtdLivros = ultimosLivros.count
-        let numeroMeta = Int(metaEntity.numeroMeta)
-        
-        progresso = numeroMeta > 0 ? Double(qtdLivros) / Double(numeroMeta) : 0
-        
-        print("Livros: \(qtdLivros), Meta: \(numeroMeta), Progresso: \(progresso)")
     }
 }
 

@@ -3,7 +3,8 @@ import SwiftUI
 
 struct BarraProgresso: View {
     @Binding var progresso: Double
-//    @Environment(\.modelContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
+    @StateObject private var metaModel: MetaProgressModel
     @Query private var metas: [Metas]
     
     var metaEntity: Metas {
@@ -12,44 +13,53 @@ struct BarraProgresso: View {
         }
         return meta
     }
-
     
     @Query(
-        filter: #Predicate<Livros> {
-            livro in
+        filter: #Predicate<Livros> { livro in
             livro.titulo != nil
         },
         sort: \Livros.titulo,
         order: .reverse
     ) private var ultimosLivros: [Livros]
-
+    
+    init(progresso: Binding<Double>) {
+        self._progresso = progresso
+        _metaModel = StateObject(wrappedValue: MetaProgressModel(modelContext: ModelContext(try! ModelContainer(for: Livros.self, Metas.self))))
+    }
     
     var progressoBarra: Double {
-        if progresso > 1 {
-            return 0.9
-        } else {
-            return 0.4 + (progresso * 0.5)
-        }
+        metaModel.calcularProgressoBarra(progresso: progresso)
     }
     
     var body: some View {
-        ZStack{
+        ZStack {
             VStack {
-                if progresso >= 1{
+                if progresso >= 1 {
                     Text("🥳")
                         .font(.system(size: 50))
                     Text("Meta Alcançada")
-                }else{
-                    Text("\(Int((progresso*100).rounded()))%")
-                        .font(.system(size: 50))
-                    Text("Você já leu \(ultimosLivros.count) de \(metaEntity.numeroMeta) livros!")
+                } else {
+                    if progresso == 0 {
+                        Text("😕")
+                            .font(.system(size: 50))
+                        Text("Nenhuma leitura adicionada!")
+                    } else {
+                        Text("\(Int((progresso * 100).rounded()))%")
+                            .font(.system(size: 50))
+                        Text("Você já leu \(metaModel.getLivros().count) de \(metaModel.getMeta()?.numeroMeta ?? 0) livros!")
+                    }
                 }
             }
             .padding()
             .overlay(
                 Circle()
                     .trim(from: 0.4, to: 0.9)
-                    .stroke(style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round, dash: [10]))
+                    .stroke(style: StrokeStyle(
+                        lineWidth: 3,
+                        lineCap: .round,
+                        lineJoin: .round,
+                        dash: [10]
+                    ))
                     .fill(.rosa)
                     .rotationEffect(.degrees(36.5))
                     .padding(-20)
@@ -57,28 +67,30 @@ struct BarraProgresso: View {
             
             Circle()
                 .trim(from: 0.4, to: 0.9)
-                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                .stroke(style: StrokeStyle(
+                    lineWidth: 20,
+                    lineCap: .round,
+                    lineJoin: .round
+                ))
                 .fill(.roxoClarissimo)
                 .rotationEffect(.degrees(36))
            
             Circle()
                 .trim(from: 0.4, to: CGFloat(progressoBarra))
-                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                .stroke(style: StrokeStyle(
+                    lineWidth: 20,
+                    lineCap: .round,
+                    lineJoin: .round
+                ))
                 .fill(
                     LinearGradient(
                         gradient: Gradient(colors: [.roxoEscuro, .rosa]),
                         startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
+                        endPoint: .bottomTrailing
                     )
                 )
                 .rotationEffect(.degrees(36))
-            
-            
-        }.padding(.horizontal,50)
-            
+        }
+        .padding(.horizontal, 50)
     }
-}
-
-#Preview {
-    BarraProgresso(progresso: .constant(1))
 }
