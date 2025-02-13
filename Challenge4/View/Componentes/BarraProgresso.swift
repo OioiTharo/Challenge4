@@ -22,7 +22,7 @@ struct BarraProgresso: View {
                 if livros.count == 0 {
                     Text("😕")
                         .font(.system(size: 50))
-                    Text("Nenhuma meta adicionada!")
+                    Text("Nenhuma leitura adicionada!")
                 } else{
                     if progresso >= 1{
                         Text("🥳")
@@ -30,9 +30,9 @@ struct BarraProgresso: View {
                         Text("Meta Alcançada")
                     }else{
                         if progresso == 0 {
-                            Text("😕")
+                            Text("😔")
                                 .font(.system(size: 50))
-                            Text("Nenhuma leitura adicionada!")
+                            Text("Nenhuma meta adicionada!")
                         } else {
                             Text("\(Int((progresso*100).rounded()))%")
                                 .font(.system(size: 50))
