@@ -5,9 +5,6 @@ import SwiftData
 struct AdicionarCapa: View {
     @Binding var selecionarImagem: Data?
     @State private var selecionarItem: PhotosPickerItem?
-//    @Environment(\.modelContext) private var viewContext
-    
-    
     var body: some View {
         
         PhotosPicker(selection: $selecionarItem, matching: .images) {

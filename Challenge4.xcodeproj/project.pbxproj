@@ -31,8 +31,6 @@
 		E31FB7692D5E7036007E049C /* Termos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31FB7682D5E7036007E049C /* Termos.swift */; };
 		E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */; };
 		E346DCAD2D5D1E4E00F73BFF /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */; };
-		E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */; };
-		E38DE1F32D4D6341002741F0 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +79,6 @@
 		E31FB7682D5E7036007E049C /* Termos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Termos.swift; sourceTree = "<group>"; };
 		E3433FA52D4AA5E500FDDA13 /* AdicionarCapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarCapa.swift; sourceTree = "<group>"; };
 		E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
-		E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivroViewModel.swift; sourceTree = "<group>"; };
-		E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,8 +188,6 @@
 			children = (
 				3B3915D82D4BF00400A05FBB /* LivrosView.swift */,
 				3B1BDA522D4AA39B002BE019 /* ContentView.swift */,
-				E38DE1F02D4D632B002741F0 /* LivroViewModel.swift */,
-				E38DE1F22D4D6341002741F0 /* MetaViewModel.swift */,
 				3B6A37332D5138C000FAE5B8 /* AdicionarLivroView.swift */,
 				3B6144BC2D5E60EE00C9E5FF /* Launch Screen.storyboard */,
 				E31FB7682D5E7036007E049C /* Termos.swift */,
@@ -360,14 +354,12 @@
 				E346DCAD2D5D1E4E00F73BFF /* SwiftData.swift in Sources */,
 				3B1BDA882D4ACD31002BE019 /* BarraProgresso.swift in Sources */,
 				E3433FA62D4AA5E500FDDA13 /* AdicionarCapa.swift in Sources */,
-				E38DE1F12D4D632B002741F0 /* LivroViewModel.swift in Sources */,
 				3B4CB7FE2D5E61B60063A8FA /* MetaProgressoModel.swift in Sources */,
 				3BC4663F2D4C1D8100D69503 /* BotaoPrincipal.swift in Sources */,
 				3B1BDA532D4AA39B002BE019 /* ContentView.swift in Sources */,
 				3B6A37362D51398600FAE5B8 /* Categorias.swift in Sources */,
 				3B34D0142D4D6535004B2AC8 /* BotaoCategoria.swift in Sources */,
 				3B1BDA842D4ACCEB002BE019 /* Avaliacao.swift in Sources */,
-				E38DE1F32D4D6341002741F0 /* MetaViewModel.swift in Sources */,
 				3B6A37342D5138C000FAE5B8 /* AdicionarLivroView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,7 +521,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -574,7 +566,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2VXAKYBKFW;
+				DEVELOPMENT_TEAM = A564AG24BR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -3,7 +3,6 @@ import SwiftUI
 struct Avaliacao: View {
     @State var avaliado: Bool = false
     @Binding var avaliacao: Int
-//    @Environment(\.modelContext) private var viewContext
     
     var body: some View {
         HStack{

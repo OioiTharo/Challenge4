@@ -4,7 +4,6 @@ struct Termos: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                // Cabeçalho
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Política de Privacidade e\nTermos de Uso - Booki")
                         .font(.system(size: 28, weight: .bold))
@@ -16,14 +15,10 @@ struct Termos: View {
                 }
                 .padding(.bottom, 8)
                 
-                // Conteúdo Principal
                 VStack(alignment: .leading, spacing: 24) {
-                    // 1. Introdução
                     SecaoTermos(titulo: "1. Introdução") {
                         Text("Bem-vindo ao Booki! Este documento estabelece os termos e condições para o uso do aplicativo Booki, bem como nossa política de privacidade. Ao usar nosso aplicativo, você concorda com estes termos e políticas.")
                     }
-                    
-                    // 2. Coleta e Uso de Dados
                     SecaoTermos(titulo: "2. Coleta e Uso de Dados") {
                         SubsecaoTermos(titulo: "2.1 Dados armazenados") {
                             BulletList {
@@ -50,7 +45,6 @@ struct Termos: View {
                         }
                     }
                     
-                    // 3. Armazenamento e Segurança
                     SecaoTermos(titulo: "3. Armazenamento e Segurança") {
                         SubsecaoTermos(titulo: "3.1 Armazenamento Local") {
                             BulletList {
@@ -61,7 +55,6 @@ struct Termos: View {
                         }
                     }
                     
-                    // 4. Termos de Uso
                     SecaoTermos(titulo: "4. Termos de Uso") {
                         SubsecaoTermos(titulo: "4.1 Licença de Uso") {
                             Text("O Booki concede uma licença pessoal, não transferível e não exclusiva para usar o aplicativo em dispositivos iOS compatíveis.")

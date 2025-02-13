@@ -7,15 +7,15 @@ struct ContentView: View {
     @State private var mostrarSheetLeitura = false
     @State private var mostrarSheetMeta = false
     @State private var progresso: Double = 0
-    @Environment(\.modelContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     
     let metaProgressModel = MetaProgressModel()
     
     var metaEntity: Metas {
         if metas.isEmpty {
             let novaMeta = Metas(numeroMeta: 0)
-            viewContext.insert(novaMeta)
-            try? viewContext.save()
+            modelContext.insert(novaMeta)
+            try? modelContext.save()
             return novaMeta
         }
         return metaProgressModel.getMeta(metas)
@@ -41,15 +41,20 @@ struct ContentView: View {
         VStack(alignment: .leading){
             
             HStack(alignment: .top){
-                Text("Meta Anual de Leitura:")
+               
+                Text("Meta Anual de Leitura")
                     .padding(.bottom, 25)
                 Spacer()
+                
                 Button(action: {
                     mostrarSheetMeta = true
                 }) {
                     Image(systemName: "pencil")
                         .foregroundColor(.roxoEscuro)
                         .font(.title3)
+                }
+                NavigationLink(destination: Termos()) {
+                    Image(systemName: "info.circle")
                 }
             }
             .padding(.horizontal, 20).padding(.top, 25)
@@ -113,4 +118,3 @@ struct ContentView: View {
         progresso = metaProgressModel.calcularMeta(livros: ultimosLivros, meta: metaEntity)
     }
 }
-
