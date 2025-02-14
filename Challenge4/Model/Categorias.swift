@@ -9,7 +9,13 @@ var CategoriasLivros: [String: String] = [
     "📚 Estudos": "65, 213, 203",
     "👽 Ficção": "36, 174, 15" ,
     "🔪 Terror": "169, 84, 75",
-    "💛 Romance": "255, 75, 70"
+    "❤️ Romance": "255, 29, 154",
+    "🧐 Mistério": "200, 68, 54",
+    "👀 Suspense": "255, 113, 45",
+    "🤣 Humor e comédia": "255, 206, 43",
+    "🆘 Auto ajuda": "250, 11, 0",
+    "🔖 Poesia": "186, 100, 200",
+    "🀄️ Quadrinho": "174, 52, 90"
 ]
 
 extension Color {
