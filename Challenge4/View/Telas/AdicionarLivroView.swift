@@ -37,17 +37,21 @@ struct AdicionarLivroView: View {
                 if(editando || adcLivro){
                     AdicionarCapa(selecionarImagem: $imagem)
                 }else{
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 150, height: 220)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .overlay(
-                            VStack {
-                                Image(systemName: "photo")
-                                    .foregroundColor(.white)
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                            }
-                        )
+                    if imagem == nil{
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 150, height: 220)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .overlay(
+                                VStack {
+                                    Image(systemName: "photo")
+                                        .foregroundColor(.white)
+                                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                }
+                            )
+                    }else{
+                        AdicionarCapa(selecionarImagem: $imagem).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    }
                 }
                 
                 TextField("Título*", text: $titulo)
