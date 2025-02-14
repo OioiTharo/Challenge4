@@ -99,6 +99,7 @@ struct ContentView: View {
                     HStack(spacing: 10) {
                         ForEach(ultimosTresLivros, id: \.self) { livro in
                             LivroAmostra(livro: livro)
+                                .frame(maxWidth: 150)
                         }
                     }
                     .padding(.horizontal, 20)

@@ -169,6 +169,7 @@
 		E3433FA02D4AA50200FDDA13 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				527FC1122D5E71AF00E38EAC /* Notificacoes.swift */,
 				E346DCAC2D5D1E4E00F73BFF /* SwiftData.swift */,
 				3B6A37352D51398600FAE5B8 /* Categorias.swift */,
 				3B4CB7FD2D5E61B60063A8FA /* MetaProgressoModel.swift */,
@@ -210,7 +211,6 @@
 				3B34D0132D4D6535004B2AC8 /* BotaoCategoria.swift */,
 				E31530B12D514D3D006FD454 /* LivroAmostra.swift */,
 				3B9E64492D514599007A3437 /* FiltroCategorias.swift */,
-				527FC1122D5E71AF00E38EAC /* Notificacoes.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
