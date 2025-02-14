@@ -6,7 +6,7 @@ struct LivrosView: View {
     @State private var categoriaSelecionada: String? = nil
     
     @Query(
-        sort: \Livros.titulo,
+        sort: \Livros.dataCriacao,
         order: .reverse
     ) private var allLivros: [Livros]
     

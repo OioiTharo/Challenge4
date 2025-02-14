@@ -16,6 +16,7 @@ struct AdicionarLivroView: View {
     @State private var imagem: Data? = nil
     @State private var mostrarAlerta = false
     @State private var mostrarAlerta2 = false
+    @State var tituloValido: Bool = true
     
     init(livro: Livros, editando: Bool = false, adcLivro: Bool = false) {
         self.livro = livro
@@ -60,7 +61,17 @@ struct AdicionarLivroView: View {
                     .padding(.horizontal, 30)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, -10)
+                    .onChange(of: titulo) { newValue in
+                        if !newValue.isEmpty {
+                            tituloValido = true
+                        }
+                    }
                 
+                if tituloValido == false {
+                    Text("Título é obrigatório")
+                        .foregroundStyle(.red)
+                        .font(.caption)
+                }
                 TextField("Autor", text: $autor).disabled(!editando && !adcLivro)
                     .padding(.horizontal, 30)
                     .multilineTextAlignment(.center)
@@ -115,18 +126,15 @@ struct AdicionarLivroView: View {
                     }
                 }
                 .disabled(!editando && !adcLivro)
-                if(editando || adcLivro){
-                    HStack{
-                        Text("* Obrigatório")
-                            .font(.footnote)
-                            .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                        Spacer()
-                    }.padding(.horizontal, 20)
-                }
+                
                 
                 if adcLivro == true{
                     HStack{
                         Button(action: {
+                            if titulo.isEmpty {
+                                tituloValido = false
+                                return
+                            }
                             livro.titulo = titulo
                             livro.autor = autor
                             livro.imagem = imagem
@@ -148,7 +156,7 @@ struct AdicionarLivroView: View {
                                 .background(.roxoEscuro)
                                 .cornerRadius(14)
                         }
-                        .disabled(titulo.isEmpty)
+                        
                         Spacer()
                         Button(action: {
                             presentationMode.wrappedValue.dismiss()
@@ -165,6 +173,10 @@ struct AdicionarLivroView: View {
                 else{
                     if editando{
                         Button(action: {
+                            if titulo.isEmpty {
+                                tituloValido = false
+                                return
+                            }
                             mostrarAlerta2 = true
                         }) {
                             Text("Salvar alterações" )
@@ -174,10 +186,10 @@ struct AdicionarLivroView: View {
                                 .background(.roxoEscuro)
                                 .cornerRadius(14)
                                 .padding(.horizontal, 20)
-                        }.disabled(titulo.isEmpty)
+                        }
                             .alert(isPresented: $mostrarAlerta2) {
                                 Alert(
-                                    title: Text("Atençao!"),
+                                    title: Text("Atenção!"),
                                     message: Text("As informações anteriores serão alteradas!"),
                                     primaryButton: .default(Text("Alterar")) {
                                         
