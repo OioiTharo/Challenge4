@@ -71,7 +71,7 @@ struct BotaoCategoria: View {
             } label: {
                 if editando || adcLivro{
                     HStack {
-                        Text(categoriasSelecionadas.isEmpty ? "Selecionar Categorias" : "Adicionar Categorias")
+                        Text(categoriasSelecionadas.isEmpty ? "Adicionar Genêro" : "Adicionar Genêro")
                             .foregroundColor(.white)
                         Image(systemName: "plus")
                             .foregroundColor(.white)
